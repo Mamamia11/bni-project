@@ -61,7 +61,7 @@ $(function(){
             } else {
                 $('#T_AKTIF').attr('selected',true);
             }
-        }if($(this).data('href') == "wilayah"){
+        }else if($(this).data('href') == "wilayah"){
             $('#formModalWilayah').html('Edit Sektor');
             $('.modal-footer button[type=submit]').html('Edit');
             var id_wil = $('.id_wil'+position).text();

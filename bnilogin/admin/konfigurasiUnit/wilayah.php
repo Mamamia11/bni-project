@@ -10,7 +10,7 @@
             </script>";
 	}
 
-    $kodesektor = query("SELECT * FROM wilayah ")
+    $kodesektor = query("SELECT * FROM wilayah")
 
 ?>
 <!DOCTYPE html>
@@ -124,23 +124,6 @@
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-align-justify"></i>
                 </button>
-
-                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Page</a>
-                        </li>
-                    </ul>
-                </div> -->
             </div>
         </nav>
 
@@ -161,11 +144,11 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td class="id_wil<? $kode['id']; ?>"><?= $kode["id_wil"];?> </td>
-                        <td class="kd_wil<? $kode['id']; ?>"><?= $kode["kd_wil"];?></td>
-                        <td class="nm_wil<? $kode['id']; ?>"><?= $kode["nm_wil"];?></td>
-                        <td class="nm_ceo<? $kode['id']; ?>"><?= $kode["nm_ceo"];?></td>
-                        <td class="status<? $kode['id']; ?>"><?= $kode["status"];?></td>
+                        <td class="id_wil<?= $kode['id']; ?>"><?= $kode["id_wil"];?> </td> <!-- kurang tanda '=', pas tag phpnya -->
+                        <td class="kd_wil<?= $kode['id']; ?>"><?= $kode["kd_wil"];?></td> <!-- kurang tanda '=', pas tag phpnya -->
+                        <td class="nm_wil<?= $kode['id']; ?>"><?= $kode["nm_wil"];?></td> <!-- kurang tanda '=', pas tag phpnya -->
+                        <td class="nm_ceo<?= $kode['id']; ?>"><?= $kode["nm_ceo"];?></td> <!-- kurang tanda '=', pas tag phpnya -->
+                        <td class="status<?= $kode['id']; ?>"><?= $kode["status"];?></td> <!-- kurang tanda '=', pas tag phpnya -->
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=wilayah" onclick="return confirm('Hapus Data?');"class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp; 
                         <a href="../../edit.php?id=<?=$kode["id"];?>"  data-bs-toggle="modal" data-bs-target="#modalWilayah"  data-id="<?= $kode["id"] ?>" data-href="wilayah" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true" ></i> </a> </td>
                     </tr>
