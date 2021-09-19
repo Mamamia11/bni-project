@@ -178,7 +178,7 @@
                         <td class="nm_gm<?=$kode['id']?>"><?= $kode["nm_gm"];?></td>
                         <td class="tipe_divisi<?=$kode['id']?>"><?= $kode["tipe_divisi"];?></td>
                         <td class="level_divisi<?=$kode['id']?>"><?= $kode["level_divisi"];?></td>
-                        <td><?= $kode["status"];?></td>
+                        <td class="status<?=$kode["id"]?>"><?= $kode["status"];?></td>
                         <td> 
                         <a href="../../clean.php?id=<?= $kode["id"]; ?>&table=divisi" onclick="return confirm('Hapus Data?');" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> &nbsp;
                         <a href="../../edit.php?id=<?=$kode["id"];?>" data-id="<?=$kode['id']?>" class="editData btn btn-sm btn-primary" data-href="divisi" data-bs-toggle="modal" data-bs-target="#modalBox"> <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
@@ -190,10 +190,10 @@
         </table>
             <br>
             <br>
-            <form action="../../tambah.php" method="POST">
+            <form id="form" action="../../tambah.php" method="POST"> <!-- kurang id form -->
                     <!-- Button trigger modal -->
                     <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBox">
+                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#modalBox">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Divisi</span>
                     </button>
@@ -208,7 +208,7 @@
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Divisi : <?= $kode['id'];?> <span  id="id_divisi"></span> </label>
+                            <label for="id" class="form-label">ID Divisi : <span id="idtambah"><?=$kode['id']?></span><span  id="kodeid"></span> </label>
                             </div>
                         <div class="mb-3">
                             <label for="kd_sektor" class="form-label">Kode Sektor :</label>
@@ -230,6 +230,7 @@
                                     <option id="DLJ" value="DLJ">DLJ</option>
                             </select>
                             <input type="hidden"  id="table" name="table" value="divisi">
+                            <input type="hidden"  id="id" name="id">
                         </div>
                         <div class="mb-3">
                             <label for="kd_divisi" class="form-label">Kode Divisi :</label>
@@ -257,9 +258,9 @@
                                 <br>
                                 <select class="form-select" id="level_divisi" name="level_divisi" required>
                                     <option value=""><strong>-Pilih Level-</strong></option>
-                                    <option id="DIVISI" value="divisi">Divisi</option>
-                                    <option id="SATUAN" value="satuan">Satuan</option>
-                                    <option id="UNIT" value="unit">unit</option>
+                                    <option id="DIVISI" value="DIVISI">Divisi</option>
+                                    <option id="SATUAN" value="SATUAN">Satuan</option>
+                                    <option id="UNIT" value="UNIT">unit</option>
                                 </select>
                                 </div>
                                 <div class="form-group">

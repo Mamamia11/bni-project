@@ -181,7 +181,7 @@
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Sektor : <span  id="id_sektor"></span> </label>
+                            <label for="id" class="form-label">ID Sektor : <span id="idtambah"><?=$kode['id']?></span><span  id="kodeid"></span> </label>
                             </div>
                         <div class="mb-3">
                             <label for="kd_sektor" class="form-label">Kode Sektor</label>
@@ -217,7 +217,7 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" id="close" data-bs-dismiss="modal">Close</button>
                             <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
                         </div>
                         </div>

@@ -24,7 +24,6 @@
 
     function edit($data){
         global $conn;
-        global $prefix;
         $table = $data['table'];
         switch ($table) {
             case 'sektor':
@@ -52,7 +51,7 @@
             //     default :
             //         break;
         }
-        $query = "UPDATE $prefix$table SET $values WHERE id=".$data['id']."";
+        $query = "UPDATE `$table` SET $values WHERE id=".$data['id']."";
         mysqli_query($conn, $query);
         return mysqli_affected_rows($conn);
     }
@@ -89,13 +88,11 @@
                     break; 
             case 'perspective' :
                     $values = "'', '".$data['ID_PERSPECTIVE']."','".$data['PERSPECTIVE']."','".$data['STATUS']."','".$data['ORDER_STATUS']."'";
-
                 default :
                     break;
         }
 
         $query = "INSERT INTO $table VALUES ($values)";
-
         mysqli_query($conn, $query);
         return mysqli_affected_rows($conn);
     }

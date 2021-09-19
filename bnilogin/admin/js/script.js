@@ -3,7 +3,11 @@ $(function(){
     $('.tambahData').on('click', function(){
         $('#formModalLabel').html('Input Sektor');
         $('.modal-footer button[type=submit]').html('Tambah');
-
+        $('#kodeid').hide(); // baru
+        $('#idtambah').show();// baru
+        $('.form-control').val("");// baru
+        $('option').attr("selected",false);// baru
+        $('textarea').val("");// baru
     });
 
 
@@ -18,8 +22,10 @@ $(function(){
             var level_dir = $('.level_dir'+position).text();
             var status = $('.status'+position).text();
             $('#form').attr('action','../../edit.php');
-            $('#id_sektor').text(position);
-            $('#id').val(position);
+            $('#id').show(); // baru
+            $('#idtambah').hide(); // baru
+            $('#kodeid').text(position); // baru
+            $('#id').val(position); // baru
             $('#kd_sektor').val(kd_sektor);
             $('#nm_sektor').val(nm_sektor);
             $('#nm_dir').val(nm_dir);
@@ -41,12 +47,16 @@ $(function(){
             var status = $('.status'+position).text();
             $('#form').attr('action','../../edit.php');
             $("#"+kd_sektor).attr('selected',true);
-            $('#id_divisi').text(position);
+            $('#id').show(); // baru
+            $('#idtambah').hide(); // baru
+            $('#kodeid').text(position); // baru
+            $('#id').val(position); // baru
             $('#kd_divisi').val(kd_divisi);
             $('#nm_divisi').val(nm_divisi);
             $('#nm_gm').val(nm_gm);
             $("#"+tipe_divisi).attr('selected',true);
             $("#"+level_divisi).attr('selected',true);
+            console.log(status)
             if(status == "AKTIF"){
                 $('#AKTIF').attr('selected',true);
             } else {
@@ -55,5 +65,9 @@ $(function(){
         }
      
     });
+
+    $('.modal').on('hidden.bs.modal',function(){// baru
+        $('option').attr("selected",false);// baru
+    })// baru
 
 });

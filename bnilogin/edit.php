@@ -17,11 +17,4 @@
 "; 
 }
 } 
-    // print_r($_POST);
-    // class edit{
-    //     public function editdata(){
-    //         print_r($_POST);
-    //     }
-    // }
-
 ?>
