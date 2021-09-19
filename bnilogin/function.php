@@ -32,9 +32,9 @@
             case 'divisi':
                 $values =  "kd_sektor='".$data['kd_sektor']."',kd_divisi='".$data['kd_divisi']."',nm_divisi='".$data['nm_divisi']."',nm_gm='".$data['nm_gm']."',tipe_divisi='".$data['tipe_divisi']."',level_divisi='".$data['level_divisi']."',status='".$data['status']."'";
                 break;
-            // case 'wilayah':
-            //         $values =  "'', '".$data['id_wil']."', '".$data['kd_wil']."', '".$data['nm_wil']."','".$data['nm_ceo']."','".$data['status']."'";
-            //     break;
+            case 'wilayah':
+                $values =  "id_wil='".$data['id_wil']."',kd_wil='".$data['kd_wil']."',nm_wil='".$data['nm_wil']."',nm_ceo='".$data['nm_ceo']."',status='".$data['status']."'";
+                break;
             // case 'cabang':
             //         $values =  "'', '".$data['id_wil']."', '".$data['id_cab']."', '".$data['kd_cab']."','".$data['nm_cab']."','".$data['tipe_cab_1']."','".$data['tipe_cab_2']."','". $data['status'] ."'";
             //     break;   

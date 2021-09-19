@@ -161,13 +161,13 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td><?= $kode["id_wil"];?> </td>
-                        <td><?= $kode["kd_wil"];?></td>
-                        <td><?= $kode["nm_wil"];?></td>
-                        <td><?= $kode["nm_ceo"];?></td>
-                        <td><?= $kode["status"];?></td>
+                        <td class="id_wil<? $kode['id']; ?>"><?= $kode["id_wil"];?> </td>
+                        <td class="kd_wil<? $kode['id']; ?>"><?= $kode["kd_wil"];?></td>
+                        <td class="nm_wil<? $kode['id']; ?>"><?= $kode["nm_wil"];?></td>
+                        <td class="nm_ceo<? $kode['id']; ?>"><?= $kode["nm_ceo"];?></td>
+                        <td class="status<? $kode['id']; ?>"><?= $kode["status"];?></td>
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=wilayah" onclick="return confirm('Hapus Data?');"class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp; 
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true" ></i> </a> </td>
+                        <a href="../../edit.php?id=<?=$kode["id"];?>"  data-bs-toggle="modal" data-bs-target="#modalWilayah"  data-id="<?= $kode["id"] ?>" data-href="wilayah" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true" ></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
@@ -175,30 +175,31 @@
             </table>
             <br>
             <br>
-            <form action="../../tambah.php" method="POST">
+            <form id="form" action="../../tambah.php" method="POST">
                     <!-- Button trigger modal -->
                     <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalWilayah">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Wilayah</span>
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalWilayah" tabindex="-1" aria-labelledby="formModalWilayah" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Input Wilayah</h5>
+                            <h5 class="modal-title" id="formModalWilayah">Input Wilayah</h5>
                             <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Data : <?= $kode["id"];?> </label>
+                            <label for="id" class="form-label">ID Data : <span id="idtambah"><?= $kode['id'];?></span><span  id="kodeid"></span> </label>
                             </div>
                         <div class="mb-3">
                             <label for="id_wil" class="form-label">ID Wilayah :</label>
                             <input type="text" class="form-control" id="id_wil" name="id_wil" required>
                             <input type="hidden"  id="table" name="table" value="wilayah">
+                            <input type="hidden"  id="id" name="id">
                             </div>
                         <div class="mb-3">
                             <label for="kd_wil" class="form-label">Kode Wilayah</label>

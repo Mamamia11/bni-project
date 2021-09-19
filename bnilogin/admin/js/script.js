@@ -22,7 +22,7 @@ $(function(){
             var level_dir = $('.level_dir'+position).text();
             var status = $('.status'+position).text();
             $('#form').attr('action','../../edit.php');
-            $('#id').show(); // baru
+            // $('#id').show(); // baru
             $('#idtambah').hide(); // baru
             $('#kodeid').text(position); // baru
             $('#id').val(position); // baru
@@ -47,7 +47,7 @@ $(function(){
             var status = $('.status'+position).text();
             $('#form').attr('action','../../edit.php');
             $("#"+kd_sektor).attr('selected',true);
-            $('#id').show(); // baru
+            // $('#id').show(); // baru
             $('#idtambah').hide(); // baru
             $('#kodeid').text(position); // baru
             $('#id').val(position); // baru
@@ -56,7 +56,28 @@ $(function(){
             $('#nm_gm').val(nm_gm);
             $("#"+tipe_divisi).attr('selected',true);
             $("#"+level_divisi).attr('selected',true);
-            console.log(status)
+            if(status == "AKTIF"){
+                $('#AKTIF').attr('selected',true);
+            } else {
+                $('#T_AKTIF').attr('selected',true);
+            }
+        }if($(this).data('href') == "wilayah"){
+            $('#formModalWilayah').html('Edit Sektor');
+            $('.modal-footer button[type=submit]').html('Edit');
+            var id_wil = $('.id_wil'+position).text();
+            var kd_wil = $('.kd_wil'+position).text();
+            var nm_wil = $('.nm_wil'+position).text();
+            var nm_ceo = $('.nm_ceo'+position).text();
+            var status = $('.status'+position).text();
+            $('#form').attr('action','../../edit.php');
+            $('#id').show(); // baru
+            $('#idtambah').hide(); // baru
+            $('#kodeid').text(position); // baru
+            $('#id').val(position); // baru
+            $('#id_wil').val(id_wil);
+            $('#kd_wil').val(kd_wil);
+            $('#nm_wil').val(nm_wil);
+            $('#nm_ceo').val(nm_ceo);
             if(status == "AKTIF"){
                 $('#AKTIF').attr('selected',true);
             } else {
