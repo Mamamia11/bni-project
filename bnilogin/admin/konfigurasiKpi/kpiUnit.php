@@ -1,6 +1,15 @@
 <?php 
 
     require '../../function.php';
+    session_start();
+	if (empty($_SESSION['username'])) {
+		echo "<script>
+                alert('Maaf Anda Belum Login');
+				document.location = '../../login.php'
+            </script>";
+	}
+
+    $kodesektor = query("SELECT*FROM kpi_unit");
 
 ?>
 <!DOCTYPE html>
@@ -15,14 +24,17 @@
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="../../assets/DataTables/datatables.min.css">
 <!-- Our Custom CSS -->
 <link rel="stylesheet" href="../css/style.css">
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="../favicon.ico">
 
 
 <!-- Font Awesome JS -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -132,14 +144,82 @@
                 </div> -->
             </div>
         </nav>
+        
+        <table class="table table-stripped table-bordered" id="myTable">
+                <thead>
+                    <td>NO</td>
+                    <td>LEVEL</td>
+                    <td>UNIT</td>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($kodesektor as $kode) : ?>
+                <tr>
+                    <td> <?= $i; ?> </td>
+                    <td class="level<?= $kode['id']; ?>"> <?= $kode['level'];?> </td>
+                    <td class="unit<?= $kode['id']; ?>"> <?= $kode['unit'];?> </td>
+                </tr>
+                    <?php $i++ ?>
+                    <?php endforeach; ?> 
+                </tbody>
+        </table>
 
+        <br>
+        <br>
 
+        <form id="form" action="../../tambah.php" method="POST">
+                    <!-- Button trigger modal -->
+                    <div class="container-fluid">
+                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fa fa-map-pin"></i>
+                   <span>Tambah Pegawai</span>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="formModalLabel">Input Sektor</h5>
+                            <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="id" class="form-label">ID Sektor :<?= $kode['id'];?> <span  id="id_sektor"></span> </label>
+                            </div>
+                        <div class="mb-3">
+                            <label for="kd_sektor" class="form-label">Unit</label>
+                            <input type="text" class="form-control" id="kpi_unit" name="kpi_unit" required>
+                            <input type="hidden"  id="table" name="table" value="kpi_unit">
+                            <input type="hidden"  id="id" name="id">
+                            </div>
+                        <div class="form-group">
+                                <label for="level">level</label>
+                                <br>
+                                <select class="form-select" id="level" name="level" required>
+                                    <option value=""><strong>-Pilih Level-</strong></option>
+                                    <option id="1" value="1">1</option>
+                                    <option id="2" value="2">2</option>
+                                    <option id="3" value="3">3</option>
+                                    <option id="4" value="4">4</option>
+                                    <option id="5" value="5">5</option>
+                                    <option id="6" value="6">6</option>
+                                </select>
+                                </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+
+      </form>
         
     </div>
 </div>
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="../../assets/DataTables/datatables.min.js"></script>
+<script src="../js/script.js"></script>
 <!-- Popper.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
@@ -147,6 +227,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#myTable').DataTable();
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });

@@ -2,6 +2,16 @@
 
     require '../../function.php';
 
+    session_start();
+	if (empty($_SESSION['username'])) {
+		echo "<script>
+                alert('Maaf Anda Belum Login');
+				document.location = '../../login.php'
+            </script>";
+	}
+
+    $kodesektor = query("SELECT * FROM perspective");
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,14 +25,17 @@
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="../../assets/DataTables/datatables.min.css">
+
 <!-- Our Custom CSS -->
 <link rel="stylesheet" href="../css/style.css">
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="../favicon.ico">
 
 
 <!-- Font Awesome JS -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -134,12 +147,47 @@
         </nav>
 
 
+        <table class="table table-stripped table-bordered" id="myTable">
+                <thead>
+                    <td>PERSPECTIVE ID</td>
+                    <td>PERSPECTIVE NAME</td>
+                    <td>AKSI</td>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($kodesektor as $kode) : ?>
+                <tr>
+                    <td> <?= $i; ?> </td>
+                    <td class="PERSPECTIVE<?= $kode['ID_PERSPECTIVE'];?>"> <?= $kode['PERSPECTIVE']?> </td>
+                    <td>
+                    <a href="../../edit.php?id=<?= $kode["ID_PERSPECTIVE"]; ?>" class="editData btn btn-md btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>&nbsp;
+                    <a href="../../clean.php?id=<?= $kode["ID_PERSPECTIVE"];?>&table=perspective" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>  
+                    <?php $i++ ?>
+                    <?php endforeach; ?> 
+                </tr>
+                </tbody>
+        </table>
+
+        <br>
+        <br>
+    <form action="">
+        <p>
+          <strong>Tambah Perspective</strong>  
+        </p>
+        <input type="file" name="perspective" id="perspective">
+        <input type="hidden" name="table" id="table" value="perspective">
+        <input type="submit" name="submit" id="submit" value="tambah">
+    </form>
+
         
     </div>
 </div>
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="../../assets/DataTables/datatables.min.js"></script>
+<script src="../js/script.js"></script>
 <!-- Popper.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
@@ -147,6 +195,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#myTable').DataTable();
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });

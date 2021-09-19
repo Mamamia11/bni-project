@@ -1,7 +1,7 @@
 <?php
        
        require 'function.php';
-
+    
 ?>
 
 <!DOCTYPE html>

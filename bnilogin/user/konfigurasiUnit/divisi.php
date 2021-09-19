@@ -168,12 +168,12 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td><?= $kode["kd_sektor"];?> </td>
-                        <td><?= $kode["kd_divisi"];?></td>
-                        <td><?= $kode["nm_divisi"];?></td>
-                        <td><?= $kode["nm_gm"];?></td>
-                        <td><?= $kode["tipe_divisi"];?></td>
-                        <td><?= $kode["level_divisi"];?></td>
+                        <td class="kd_sektor"><?= $kode["kd_sektor"];?> </td>
+                        <td class="kd_divisi"><?= $kode["kd_divisi"];?></td>
+                        <td class="nm_divisi"><?= $kode["nm_divisi"];?></td>
+                        <td class="nm_gm"><?= $kode["nm_gm"];?></td>
+                        <td class="tipe_divisi"><?= $kode["tipe_divisi"];?></td>
+                        <td class="level_divisi"><?= $kode["level_divisi"];?></td>
                         <td><?= $kode["status"];?></td>
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>" onclick="return confirm('Hapus Data?');"><i class="fa fa-trash" aria-hidden="true"></i></a> | <a href="../../edit.php?id=<?=$kode["id"];?>"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
