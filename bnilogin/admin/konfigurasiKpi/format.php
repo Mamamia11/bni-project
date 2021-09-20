@@ -10,6 +10,7 @@
 	}
 
     $kodesektor = query("SELECT*FROM perspective");
+    $kodesektor2 = query("SELECT*FROM format_perspective GROUP BY id_format");
 ?>
 <!DOCTYPE html>
 <html>
@@ -150,12 +151,14 @@
                 <td>VIEW</td>
             </thead>
             <tbody>
-                <?php $i = 1; ?>
-                    <tr>
-                        <td> <?= $i;?> </td>
+                <?php
+                    foreach ($kodesektor2 as $key => $kode) {
+                ?>
+<tr>
+                        <td> <?= ++$key;?> </td>
                         <td>
                         <a style="text-decoration:none" title="Double Click untuk Edit" ondblclick="editFormatPerspective(1,35)">
-		                BUMN 2017</a>
+		                <?=$kode['nm_format']?></a>
                         </td>
                         <td>
                         <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -164,14 +167,15 @@
                         </button>
                         </td>                   
                      </tr>
-                    <?php $i++; ?>
-
+                <?php
+                    }
+                    $id = $kode['id_format']+1;
+                ?>
             </tbody>
 
 
         </table>
 
-        <form action="../../tambah.php" method="POST">
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -186,9 +190,15 @@
                                 <th>ORDER</th>
                                 <th>PERSPECTIVE</th>
                             </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
+                            <?php
+                                foreach ($kodesektor as $key => $p) {
+                                    ?>
+                                        <tr>
+                                            <td><?=$p['PERSPECTIVE']?></td>
+                                        </tr>
+                                    <?php
+                                }
+                            ?>
                         </table>
                         </div>
                         <div class="modal-footer">
@@ -200,7 +210,7 @@
                     </div>
         
 
-        <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#tambahFormat">
+        <button type="button" class="btn btn-primary format" data-bs-toggle="modal" data-bs-target="#tambahFormat">
                  <i class="fa fa-map-pin"></i>
                     <span>Tambah Format</span>
         </button>
@@ -213,6 +223,7 @@
                             <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                        <form action="../../tambah.php" method="POST">
                         <label for="Tambah Format"> <strong>Tambah Format</strong></label>
                         &nbsp;
                         <br>
@@ -234,14 +245,11 @@
                             <tr>
                                 <td><?= $kodi['ID_PERSPECTIVE']; ?></td>
                                 <td><?= $kodi['PERSPECTIVE'];?></td>
-                                <td> <input name="status-6" type="radio" value="0" checked="" onclick="order('6-0')">
-                                <input type="hidden"  id="table" name="table" value="format">
-                                <input type="hidden"  id="id" name="id">
-                                </td>
-                                <td> <input name="status-6" type="radio" value="1" onclick="order('6-1')"></td>
+                                <td> <input name="status[<?=$kodi['ID_PERSPECTIVE']?>]" class="unaktif-radio" data-id="<?=$kodi['ID_PERSPECTIVE']?>" type="radio" value="0" checked></td>
+                                <td> <input name="status[<?=$kodi['ID_PERSPECTIVE']?>]" class="aktif-radio" data-id="<?=$kodi['ID_PERSPECTIVE']?>" type="radio" value="<?=$kodi['ID_PERSPECTIVE']?>" ></td>
                                 <td>
-                                <select name="select-6" id="order-6" disabled="disabled" required="">
-                                <option value="0" selected="selected">0</option>
+                                <select name="order[<?=$kodi['ID_PERSPECTIVE']?>]" id="order<?=$kodi['ID_PERSPECTIVE']?>" disabled="disabled" required="">
+                                <option class="default-value<?=$kodi['ID_PERSPECTIVE']?>" value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -264,9 +272,12 @@
                         </table>
                         </div>
                         <div class="modal-footer">
+                            <input type="hidden"  id="table" name="table" value="format_perspective">
+                            <input type="hidden"  id="id" name="id" value="<?=$id?>">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
                         </div>
+                        </form>
                         </div>
                     </div>
                     </div>

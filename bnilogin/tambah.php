@@ -3,7 +3,6 @@
     
     require 'function.php';
     
-
     if (isset($_POST["submit"])) {
         if (tambah($_POST) > 0 ) {
             echo "

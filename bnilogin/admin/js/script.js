@@ -108,7 +108,11 @@ $(function(){
             $('#kd_cab').val(kd_cab);
             $('#nm_cab').val(nm_cab);
             $("#"+tipe_cab_1).attr('selected',true);
-            $("#"+tipe_cab_2).attr('selected',true);
+            if(tipe_cab_2 == "KOTA BESAR"){
+                $('#KOTA-BESAR').attr('selected',true);
+            } else {
+                $('#REMOTE').attr('selected',true);
+            }
             if(status == "AKTIF"){
                 $('#AKTIF').attr('selected',true);
             } else {
@@ -167,4 +171,15 @@ $(function(){
         $('option').attr("selected",false);// baru
     })// baru
 
+
+    $('.aktif-radio').on('click',function(){
+        var position = $(this).attr('data-id');
+        $('.default-value'+position).attr('selected',false);
+        $('#order'+position).attr('disabled',false);
+    })
+    $('.unaktif-radio').on('click',function(){
+        var position = $(this).attr('data-id');
+        $('.default-value'+position).attr('selected',true);
+        $('#order'+position).attr('disabled',true);
+    })
 });

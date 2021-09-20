@@ -92,8 +92,20 @@
                     break;
         }
 
-        $query = "INSERT INTO $table VALUES ($values)";
-        mysqli_query($conn, $query);
+        if($table !== "format_perspective"){
+            $query = "INSERT INTO $table VALUES ($values)";
+            mysqli_query($conn, $query);
+        } else {
+            foreach ($data['status'] as $key => $value) {
+                if (@$data['order'][$key] == "") {
+                   $order = 0;
+                } else {
+                    $order = $data['order'][$key];
+                }
+                $query = "INSERT INTO $table VALUES ('".$data['id']."','".$data['format']."','".$key."','".$value."','".$order."')";
+                mysqli_query($conn, $query);
+            }
+        }
         return mysqli_affected_rows($conn);
     }
     

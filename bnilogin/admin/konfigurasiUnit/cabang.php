@@ -164,7 +164,7 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td class="id_wil<?=$kode['id'];?>"><?= $kode["id_wil"];?> </td>
+                        <td class="id_wil<?=$kode['id'];?>"><?= $kode["id_wil"];?></td>
                         <td class="id_cab<?=$kode['id'];?>"><?= $kode["id_cab"];?></td>
                         <td class="kd_cab<?=$kode['id'];?>"><?= $kode["kd_cab"];?></td>
                         <td class="nm_cab<?=$kode['id'];?>"><?= $kode["nm_cab"];?></td>
@@ -206,23 +206,23 @@
                             <label for="id_wil" class="form-label">ID WILAYAH :</label>
                             <select class="form-select" id="id_wil" name="id_wil" required>
                                     <option value=""><strong>-Pilih WILAYAH-</strong></option>
-                                    <option value="601">601 : WMD</option>
-                                    <option value="602">602 : WPD</option>
-                                    <option value="603">603 : WPL</option>
-                                    <option value="604">604 : WBN</option>
-                                    <option value="605">605 : WSM</option>
-                                    <option value="606">606 : WSY</option>
-                                    <option value="607">607 : WMK</option>
-                                    <option value="608">608 : WDR</option>
-                                    <option value="609">609 : WBJ</option>
-                                    <option value="610">610 : WJS</option>
-                                    <option value="611">611 : WMO</option>
-                                    <option value="612">612 : WJK</option>
-                                    <option value="614">614 : WJB</option>
-                                    <option value="615">615 : WJY</option>
-                                    <option value="616">616 : WPU</option>
-                                    <option value="617">617 : WYK</option>
-                                    <option value="618">618 : WMA</option>
+                                    <option id="601" value="601">601 : WMD</option>
+                                    <option id="602" value="602">602 : WPD</option>
+                                    <option id="603" value="603">603 : WPL</option>
+                                    <option id="604" value="604">604 : WBN</option>
+                                    <option id="605" value="605">605 : WSM</option>
+                                    <option id="606" value="606">606 : WSY</option>
+                                    <option id="607" value="607">607 : WMK</option>
+                                    <option id="608" value="608">608 : WDR</option>
+                                    <option id="609" value="609">609 : WBJ</option>
+                                    <option id="610" value="610">610 : WJS</option>
+                                    <option id="611" value="611">611 : WMO</option>
+                                    <option id="612" value="612">612 : WJK</option>
+                                    <option id="614" value="614">614 : WJB</option>
+                                    <option id="615" value="615">615 : WJY</option>
+                                    <option id="616" value="616">616 : WPU</option>
+                                    <option id="617" value="617">617 : WYK</option>
+                                    <option id="618" value="618">618 : WMA</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -242,9 +242,9 @@
                                 <br>
                                 <select class="form-select" id="tipe_cab_1" name="tipe_cab_1" required>
                                     <option value=""><strong>-Pilih Tipe Cabang 1-</strong></option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
+                                    <option id="A" value="A">A</option>
+                                    <option id="B" value="B">B</option>
+                                    <option id="C" value="C">C</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -252,8 +252,8 @@
                                 <br>
                                 <select class="form-select" id="tipe_cab_2" name="tipe_cab_2" required>
                                     <option value=""><strong>-Pilih Tipe Cabang 2-</strong></option>
-                                    <option value="KOTA BESAR">KOTA BESAR</option>
-                                    <option value="REMOTE">REMOTE</option>
+                                    <option id="KOTA-BESAR" value="KOTA BESAR">KOTA BESAR</option>
+                                    <option id="REMOTE" value="REMOTE">REMOTE</option>
                                 </select>
                                 </div>
                                 <div class="form-group">
