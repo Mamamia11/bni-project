@@ -160,12 +160,12 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td><?= $kode["kd_pa"];?> </td>
-                        <td><?= $kode["nm_pa"];?></td>
-                        <td><?= $kode["nm_dir"];?></td>
-                        <td><?= $kode["status"];?></td>
+                        <td class="kd_pa<?= $kode['id']; ?>"><?= $kode["kd_pa"];?> </td>
+                        <td class="nm_pa<?= $kode['id']; ?>"><?= $kode["nm_pa"];?></td>
+                        <td class="nm_dir<?= $kode['id']; ?>"><?= $kode["nm_dir"];?></td>
+                        <td class="status<?=$kode['id']?>"><?= $kode["status"];?></td>
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=perusahaan" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;
-                        <a href="../../edit.php?id=<?=$kode["id"];?>"class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-id="<?= $kode["id"] ?>" data-bs-target="#modalPa" data-href="Pa" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
@@ -173,30 +173,31 @@
             </table>
             <br>
             <br>
-            <form action="../../tambah.php" method="POST">
+            <form id="form" action="../../tambah.php" method="POST">
                     <!-- Button trigger modal -->
                     <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#modalPa">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Sektor</span>
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalPa" tabindex="-1" aria-labelledby="exampleModalPa" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Input Perusahaan Anak</h5>
+                            <h5 class="modal-title" id="exampleModalPa">Input Perusahaan Anak</h5>
                             <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Perusahaan Anak : <?= $kode["id"];?> </label>
+                            <label for="id" class="form-label">ID Perusahaan Anak : <span id="idtambah"><?=$kode['id']?></span><span  id="kodeid"></span></label>
                             </div>
                         <div class="mb-3">
                             <label for="kd_pa" class="form-label">Kode Sektor</label>
                             <input type="text" class="form-control" id="kd_pa" name="kd_pa" required>
                             <input type="hidden"  id="table" name="table" value="perusahaan">
+                            <input type="hidden"  id="id" name="id">
                             </div>
                         <div class="mb-3">
                             <label for="nm_pa" class="form-label">Nama Perusahaan Anak</label>

@@ -2,6 +2,7 @@
 
     require '../../function.php';
 
+
     session_start();
 	if (empty($_SESSION['username'])) {
 		echo "<script>
@@ -162,14 +163,14 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td><?= $kode["id_wil"];?> </td>
-                        <td><?= $kode["id_sentra"];?></td>
-                        <td><?= $kode["kd_sentra"];?></td>
-                        <td><?= $kode["nm_sentra"];?></td>
-                        <td><?= $kode["tipe_sentra"];?></td>
-                        <td><?= $kode["status"];?></td>
+                        <td class="id_wil<?=$kode['id']?>"><?= $kode["id_wil"];?> </td>
+                        <td class="id_sentra<?=$kode['id']?>"><?= $kode["id_sentra"];?></td>
+                        <td class="kd_sentra<?=$kode['id']?>"><?= $kode["kd_sentra"];?></td>
+                        <td class="nm_sentra<?=$kode['id']?>"><?= $kode["nm_sentra"];?></td>
+                        <td class="tipe_sentra<?=$kode['id']?>"><?= $kode["tipe_sentra"];?></td>
+                        <td class="status<?=$kode['id']?>"><?= $kode["status"];?></td>
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=risiko" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp; 
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-bs-target="#modalSentra" data-id="<?= $kode["id"] ?>" data-href="risiko" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>

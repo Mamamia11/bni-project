@@ -38,12 +38,12 @@
             case 'cabang':
                     $values =  "id_wil='".$data['id_wil']."',id_cab='".$data['id_cab']."',kd_cab='".$data['kd_cab']."',nm_cab='".$data['nm_cab']."',tipe_cab_1='".$data['tipe_cab_1']."', tipe_cab_2='".$data['tipe_cab_2']."',status='".$data['status']."'";
                 break;   
-            // case 'sentra':
-            //         $values =  "'', '".$data['id_wil']."', '".$data['id_sentra']."', '".$data['kd_sentra']."','".$data['nm_sentra']."','".$data['tipe_sentra']."','". $data['status'] ."'";
-            //     break;
-            // case 'perusahaan':
-            //         $values =  "'', '".$data['kd_pa']."', '".$data['nm_pa']."', '".$data['nm_dir']."','".$data['status']."'";
-            //         break;   
+            case 'sentra':
+                    $values = "id_wil='".$data['id_wil']."',id_sentra='".$data['id_sentra']."',kd_sentra='".$data['kd_sentra']."',nm_sentra='".$data['nm_sentra']."',tipe_sentra='".$data['tipe_sentra']."',status='".$data['status']."'";
+                break;
+            case 'perusahaan':
+                    $values =  "kd_pa='" . $data['kd_pa']. "',nm_pa='" . $data['nm_pa']. "',nm_dir='" . $data['nm_dir']. "',status='" . $data['status']. "'";
+                    break;   
             // case 'cabangln':
             //         $values =  "'', '".$data['id_cab']."', '".$data['kd_cab']."', '".$data['nm_cab']."','".$data['status']."'";
             //         break; 

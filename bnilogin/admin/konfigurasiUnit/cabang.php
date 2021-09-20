@@ -200,7 +200,7 @@
                         <div class="mb-3">
                             <label for="id" class="form-label">ID Data : <span id="idtambah"><?= $kode['id'];?></span><span  id="kodeid"></span> </label>
                             <input type="hidden"  id="table" name="table" value="cabang">
-                            <input type="hidden"  id="id" name="id">    
+                            <input type="hidden" id="id" name="id">    
                             </div>
                         <div class="mb-3">
                             <label for="id_wil" class="form-label">ID WILAYAH :</label>

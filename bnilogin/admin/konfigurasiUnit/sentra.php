@@ -144,14 +144,14 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td><?= $kode["id_wil"];?> </td>
-                        <td><?= $kode["id_sentra"];?></td>
-                        <td><?= $kode["kd_sentra"];?></td>
-                        <td><?= $kode["nm_sentra"];?></td>
-                        <td><?= $kode["tipe_sentra"];?></td>
-                        <td><?= $kode["status"];?></td>
+                        <td class="id_wil<?=$kode['id']?>"><?= $kode["id_wil"];?> </td>
+                        <td class="id_sentra<?=$kode['id']?>"><?= $kode["id_sentra"];?></td>
+                        <td class="kd_sentra<?=$kode['id']?>"><?= $kode["kd_sentra"];?></td>
+                        <td class="nm_sentra<?=$kode['id']?>"><?= $kode["nm_sentra"];?></td>
+                        <td class="tipe_sentra<?=$kode['id']?>"><?= $kode["tipe_sentra"];?></td>
+                        <td class="status<?=$kode['id']?>"><?= $kode["status"];?></td>
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=sentra" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp; 
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-bs-target="#modalSentra" data-id="<?= $kode["id"] ?>" data-href="sentra" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
@@ -159,25 +159,25 @@
         </table>
             <br>
             <br>
-            <form action="../../tambah.php" method="POST">
+            <form id="form" action="../../tambah.php" method="POST">
                     <!-- Button trigger modal -->
                     <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBox">
+                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#modalSentra">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Sentra</span>
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="modalBox" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalSentra" tabindex="-1" aria-labelledby="exampleModalSentra" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Input Sentra Kredit</h5>
+                            <h5 class="modal-title" id="exampleModalSentra">Input Sentra Kredit</h5>
                             <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Data : <?= $kode["id"];?> </label>
+                            <label for="id" class="form-label">ID Data : <span id="idtambah"><?=$kode['id']?></span><span  id="kodeid"></span> </label>
                             </div>
                         <div class="mb-3">
                             <label for="id_wil" class="form-label">ID WILAYAH :</label>
@@ -202,6 +202,7 @@
                                     <option value="618">618 : WMA</option>
                             </select>
                             <input type="hidden"  id="table" name="table" value="sentra">
+                            <input type="hidden"  id="id" name="id">
                         </div>
                         <div class="mb-3">
                             <label for="id_sentra" class="form-label">ID SENTRA :</label>
