@@ -161,7 +161,7 @@
             <form id="form" action="../../tambah.php" method="POST">
                     <!-- Button trigger modal -->
                     <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalWilayah">
+                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#modalWilayah">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Wilayah</span>
                     </button>

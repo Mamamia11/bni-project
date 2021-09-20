@@ -49,6 +49,7 @@ $(function(){
             $("#"+kd_sektor).attr('selected',true);
             // $('#id').show(); // baru
             $('#idtambah').hide(); // baru
+            $('#kodeid').show();
             $('#kodeid').text(position); // baru
             $('#id').val(position); // baru
             $('#kd_divisi').val(kd_divisi);
@@ -70,7 +71,8 @@ $(function(){
             var nm_ceo = $('.nm_ceo'+position).text();
             var status = $('.status'+position).text();
             $('#form').attr('action','../../edit.php');
-            $('#id').show(); // baru
+            // $('#id').show(); // baru
+            $('#kodeid').show();
             $('#idtambah').hide(); // baru
             $('#kodeid').text(position); // baru
             $('#id').val(position); // baru
