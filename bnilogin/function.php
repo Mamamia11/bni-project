@@ -35,9 +35,9 @@
             case 'wilayah':
                 $values =  "id_wil='".$data['id_wil']."',kd_wil='".$data['kd_wil']."',nm_wil='".$data['nm_wil']."',nm_ceo='".$data['nm_ceo']."',status='".$data['status']."'";
                 break;
-            // case 'cabang':
-            //         $values =  "'', '".$data['id_wil']."', '".$data['id_cab']."', '".$data['kd_cab']."','".$data['nm_cab']."','".$data['tipe_cab_1']."','".$data['tipe_cab_2']."','". $data['status'] ."'";
-            //     break;   
+            case 'cabang':
+                    $values =  "id_wil='".$data['id_wil']."',id_cab='".$data['id_cab']."',kd_cab='".$data['kd_cab']."',nm_cab='".$data['nm_cab']."',tipe_cab_1='".$data['tipe_cab_1']."', tipe_cab_2='".$data['tipe_cab_2']."',status='".$data['status']."'";
+                break;   
             // case 'sentra':
             //         $values =  "'', '".$data['id_wil']."', '".$data['id_sentra']."', '".$data['kd_sentra']."','".$data['nm_sentra']."','".$data['tipe_sentra']."','". $data['status'] ."'";
             //     break;

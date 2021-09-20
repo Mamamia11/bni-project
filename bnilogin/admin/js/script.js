@@ -72,7 +72,7 @@ $(function(){
             var nm_ceo = $('.nm_ceo'+position).text();
             var status = $('.status'+position).text();
             $('#form').attr('action','../../edit.php');
-            // $('#id').show(); // baru
+            $('#id').show(); // baru
             $('#kodeid').show();
             $('#idtambah').hide(); // baru
             $('#kodeid').text(position); // baru
@@ -81,6 +81,33 @@ $(function(){
             $('#kd_wil').val(kd_wil);
             $('#nm_wil').val(nm_wil);
             $('#nm_ceo').val(nm_ceo);
+            if(status == "AKTIF"){
+                $('#AKTIF').attr('selected',true);
+            } else {
+                $('#T_AKTIF').attr('selected',true);
+            }
+        }else if($(this).data('href') == "cabang"){
+            $('#exampleModalCabang').html('Edit Sektor');
+            $('.modal-footer button[type=submit]').html('Edit');
+            var id_wil = $('.id_wil'+position).text();
+            var id_cab = $('.id_cab'+position).text();
+            var kd_cab = $('.kd_cab'+position).text();
+            var nm_cab = $('.nm_cab'+position).text();
+            var tipe_cab_1 = $('.tipe_cab_1'+position).text();
+            var tipe_cab_2 = $('.tipe_cab_2'+position).text();
+            var status = $('.status'+position).text();
+            $('#form').attr('action','../../edit.php');
+            $("#"+id_wil).attr('selected',true);
+            // $('#id').show(); // baru
+            $('#kodeid').show();
+            $('#idtambah').hide(); // baru
+            $('#kodeid').text(position); // baru
+            $('#id').val(position); // baru
+            $('#id_cab').val(id_cab);
+            $('#kd_cab').val(kd_cab);
+            $('#nm_cab').val(nm_cab);
+            $("#"+tipe_cab_1).attr('selected',true);
+            $("#"+tipe_cab_2).attr('selected',true);
             if(status == "AKTIF"){
                 $('#AKTIF').attr('selected',true);
             } else {

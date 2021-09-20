@@ -164,15 +164,15 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td><?= $kode["id_wil"];?> </td>
-                        <td><?= $kode["id_cab"];?></td>
-                        <td><?= $kode["kd_cab"];?></td>
-                        <td><?= $kode["nm_cab"];?></td>
-                        <td><?= $kode["tipe_cab_1"];?></td>
-                        <td><?= $kode["tipe_cab_2"];?></td>
-                        <td><?= $kode["status"];?></td>
+                        <td class="id_wil<?=$kode['id'];?>"><?= $kode["id_wil"];?> </td>
+                        <td class="id_cab<?=$kode['id'];?>"><?= $kode["id_cab"];?></td>
+                        <td class="kd_cab<?=$kode['id'];?>"><?= $kode["kd_cab"];?></td>
+                        <td class="nm_cab<?=$kode['id'];?>"><?= $kode["nm_cab"];?></td>
+                        <td class="tipe_cab_1<?=$kode['id'];?>"><?= $kode["tipe_cab_1"];?></td>
+                        <td class="tipe_cab_2<?=$kode['id'];?>"><?= $kode["tipe_cab_2"];?></td>
+                        <td class="status<?=$kode['id'];?>"><?= $kode["status"];?></td>
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=cabang" onclick="return confirm('Hapus Data?');" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" class="editData btn btn-sm btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-bs-target="#modalCabang" data-href="cabang" data-id="<?= $kode["id"] ?>" class="editData btn btn-sm btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
@@ -180,25 +180,27 @@
         </table>
             <br>
             <br>
-            <form action="../../tambah.php" method="POST">
+            <form id="form" action="../../tambah.php" method="POST">
                     <!-- Button trigger modal -->
                     <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBox">
+                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#modalCabang">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Cabang</span>
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="modalBox" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalCabang" tabindex="-1" aria-labelledby="exampleModalCabang" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Input Cabang</h5>
+                            <h5 class="modal-title" id="exampleModalCabang">Input Cabang</h5>
                             <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Data : <?= $kode["id"];?> </label>
+                            <label for="id" class="form-label">ID Data : <span id="idtambah"><?= $kode['id'];?></span><span  id="kodeid"></span> </label>
+                            <input type="hidden"  id="table" name="table" value="cabang">
+                            <input type="hidden"  id="id" name="id">    
                             </div>
                         <div class="mb-3">
                             <label for="id_wil" class="form-label">ID WILAYAH :</label>
@@ -222,7 +224,6 @@
                                     <option value="617">617 : WYK</option>
                                     <option value="618">618 : WMA</option>
                             </select>
-                            <input type="hidden"  id="table" name="table" value="cabang">
                         </div>
                         <div class="mb-3">
                             <label for="id_cab" class="form-label">ID CABANG : </label>
