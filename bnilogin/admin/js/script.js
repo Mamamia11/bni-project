@@ -3,6 +3,7 @@ $(function(){
     $('.tambahData').on('click', function(){
         $('#formModalLabel').html('Input Sektor');
         $('.modal-footer button[type=submit]').html('Tambah');
+        $('#form').attr('action','../../tambah.php');
         $('#kodeid').hide(); // baru
         $('#idtambah').show();// baru
         $('.form-control').val("");// baru
