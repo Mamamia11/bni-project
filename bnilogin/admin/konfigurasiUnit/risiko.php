@@ -176,6 +176,86 @@
                     <?php endforeach; ?>
                     </tbody>
         </table>
+
+        <form id="form" action="../../edit.php" method="POST">
+        <!-- Modal -->
+        <div class="modal fade" id="modalSentra" tabindex="-1" aria-labelledby="exampleModalSentra" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalSentra">Input Sentra Kredit</h5>
+                            <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="id" class="form-label">ID Data : <span id="idtambah"><?=$kode['id']?></span><span  id="kodeid"></span> </label>
+                            </div>
+                        <div class="mb-3">
+                            <label for="id_wil" class="form-label">ID WILAYAH :</label>
+                            <select class="form-select" id="id_wil" name="id_wil" required>
+                                    <option value=""><strong>-Pilih WILAYAH-</strong></option>
+                                    <option id="601" value="601">601 : WMD</option>
+                                    <option id="602" value="602">602 : WPD</option>
+                                    <option id="603" value="603">603 : WPL</option>
+                                    <option id="604" value="604">604 : WBN</option>
+                                    <option id="605" value="605">605 : WSM</option>
+                                    <option id="606" value="606">606 : WSY</option>
+                                    <option id="607" value="607">607 : WMK</option>
+                                    <option id="608" value="608">608 : WDR</option>
+                                    <option id="609" value="609">609 : WBJ</option>
+                                    <option id="610" value="610">610 : WJS</option>
+                                    <option id="611" value="611">611 : WMO</option>
+                                    <option id="612" value="612">612 : WJK</option>
+                                    <option id="614" value="614">614 : WJB</option>
+                                    <option id="615" value="615">615 : WJY</option>
+                                    <option id="616" value="616">616 : WPU</option>
+                                    <option id="617" value="617">617 : WYK</option>
+                                    <option id="618" value="618">618 : WMA</option>
+                            </select>
+                            <input type="hidden"  id="table" name="table" value="sentra">
+                            <input type="hidden"  id="id" name="id">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_sentra" class="form-label">ID SENTRA :</label>
+                            <input type="text" class="form-control" id="id_sentra" name="id_sentra" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="kd_sentra" class="form-label">KODE SENTRA :</label>
+                            <input type="text" class="form-control" id="kd_sentra" name="kd_sentra" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nm_sentra" class="form-label">NAMA SENTRA :</label>
+                            <input type="text" class="form-control" id="nm_sentra" name="nm_sentra" required>
+                        </div>
+                            <div class="form-group">
+                                <label for="tipe_sentra">TIPE SENTRA :</label>
+                                <br>
+                                <select class="form-select" id="tipe_sentra" name="tipe_sentra" required>
+                                    <option value=""><strong>-Pilih Tipe SENTRA-</strong></option>
+                                    <option id="SKM" value="SKM">SKM</option>
+                                    <option id="SKC" value="SKC">SKC</option>
+                                    <option id="LNC" value="LNC">LNC</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <br>
+                                <select class="form-select" id="status" name="status" required>
+                                    <option value=""><strong>-Pilih status-</strong></option>
+                                    <option id="AKTIF" value="AKTIF">AKTIF</option>
+                                    <option id="T_AKTIF" value="TIDAK AKTIF">TIDAK AKTIF</option>
+                                </select>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+        </form>
         
     </div>
 </div>

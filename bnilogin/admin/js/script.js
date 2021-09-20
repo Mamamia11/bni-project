@@ -163,6 +163,26 @@ $(function(){
             } else {
                 $('#T_AKTIF').attr('selected',true);
             }
+        }else if($(this).data('href') == "cabangln"){
+            $('#exampleModalCabangLn').html('Edit Sektor');
+            $('.modal-footer button[type=submit]').html('Edit');
+            var id_cab = $('.id_cab'+position).text();
+            var kd_cab = $('.kd_cab'+position).text();
+            var nm_cab = $('.nm_cab'+position).text();
+            var status = $('.status'+position).text();
+            $('#form').attr('action','../../edit.php');
+            $('#idtambah').hide(); // baru
+            $('#kodeid').show();
+            $('#kodeid').text(position); // baru
+            $('#id').val(position); // baru
+            $('#id_cab').val(id_cab);
+            $('#kd_cab').val(kd_cab);
+            $('#nm_cab').val(nm_cab);
+            if(status == "AKTIF"){
+                $('#AKTIF').attr('selected',true);
+            } else {
+                $('#T_AKTIF').attr('selected',true);
+            }
         }
      
     });

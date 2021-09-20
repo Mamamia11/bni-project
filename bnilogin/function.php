@@ -44,9 +44,9 @@
             case 'perusahaan':
                     $values =  "kd_pa='" . $data['kd_pa']. "',nm_pa='" . $data['nm_pa']. "',nm_dir='" . $data['nm_dir']. "',status='" . $data['status']. "'";
                     break;   
-            // case 'cabangln':
-            //         $values =  "'', '".$data['id_cab']."', '".$data['kd_cab']."', '".$data['nm_cab']."','".$data['status']."'";
-            //         break; 
+            case 'cabangln':
+                    $values =  "kd_pa='" . $data['kd_pa']. "',nm_pa='" . $data['nm_pa']. "',nm_dir='" . $data['nm_dir']. "',status='" . $data['status']. "'";
+                    break; 
 
             //     default :
             //         break;
