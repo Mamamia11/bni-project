@@ -1,7 +1,7 @@
 <?php 
     
     $conn = mysqli_connect('localhost', 'root', '', 'bni_multiuser') or die(mysqli_error($conn));
-    $prefix = "tbl_pmg_";
+    // $prefix = "tbl_pmg_";
     // Query ke Database
     function query($query)
     {
@@ -25,6 +25,7 @@
     function edit($data){
         global $conn;
         $table = $data['table'];
+        $id = $data['id'];
         switch ($table) {
             case 'sektor':
                 $values =  "kd_sektor='".$data['kd_sektor']."',nm_sektor='".$data['nm_sektor']."',nm_dir='".$data['nm_dir']."',level_dir='".$data['level_dir']."',status='".$data['status']."'";
@@ -39,19 +40,23 @@
                     $values =  "id_wil='".$data['id_wil']."',id_cab='".$data['id_cab']."',kd_cab='".$data['kd_cab']."',nm_cab='".$data['nm_cab']."',tipe_cab_1='".$data['tipe_cab_1']."', tipe_cab_2='".$data['tipe_cab_2']."',status='".$data['status']."'";
                 break;   
             case 'sentra':
+                    $values = "'',id_wil='".$data['id_wil']."',id_sentra='".$data['id_sentra']."',kd_sentra='".$data['kd_sentra']."',nm_sentra='".$data['nm_sentra']."',tipe_sentra='".$data['tipe_sentra']."',status='".$data['status']."'";
+                break;
+            case 'risiko':
                     $values = "id_wil='".$data['id_wil']."',id_sentra='".$data['id_sentra']."',kd_sentra='".$data['kd_sentra']."',nm_sentra='".$data['nm_sentra']."',tipe_sentra='".$data['tipe_sentra']."',status='".$data['status']."'";
                 break;
             case 'perusahaan':
                     $values =  "kd_pa='" . $data['kd_pa']. "',nm_pa='" . $data['nm_pa']. "',nm_dir='" . $data['nm_dir']. "',status='" . $data['status']. "'";
                     break;   
             case 'cabangln':
-                    $values =  "kd_pa='" . $data['kd_pa']. "',nm_pa='" . $data['nm_pa']. "',nm_dir='" . $data['nm_dir']. "',status='" . $data['status']. "'";
+                    $values =  "id_cab='" . $data['id_cab']. "',kd_cab='" . $data['kd_cab']. "',nm_cab='" . $data['nm_cab']. "',status='" . $data['status']. "'";
                     break; 
 
             //     default :
             //         break;
         }
-        $query = "UPDATE `$table` SET $values WHERE id=".$data['id']."";
+        // $query = "UPDATE `$table` SET $values WHERE id=".$data['id']."";
+        $query = "UPDATE `$table` SET $values WHERE id=$id";
         mysqli_query($conn, $query);
         return mysqli_affected_rows($conn);
     }

@@ -1,8 +1,6 @@
 <?php 
 
-    require '../../function.php';
-
-
+    
     session_start();
 	if (empty($_SESSION['username'])) {
 		echo "<script>
@@ -10,8 +8,11 @@
 				document.location = '../../login.php'
             </script>";
 	}
+    require '../../function.php';
 
-    $kodesektor = query("SELECT * FROM risiko")
+    // $id = $_GET["id"];
+    $kodesektor = query("SELECT * FROM risiko");
+    // $kodim = query("SELECT *FROM risiko")[0];
 
 ?>
 <!DOCTYPE html>
@@ -183,12 +184,13 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalSentra">Input Sentra Kredit</h5>
+                            <h5 class="modal-title" id="exampleModalSentra">Edit Sentra</h5>
                             <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Data : <span id="idtambah"><?=$kode['id']?></span><span  id="kodeid"></span> </label>
+                            <label for="id" class="form-label">ID Data : </label>
+                            <input type="hidden"  id="id" name="id" value="<?= $kode['id']; ?>">
                             </div>
                         <div class="mb-3">
                             <label for="id_wil" class="form-label">ID WILAYAH :</label>
@@ -200,7 +202,7 @@
                                     <option id="604" value="604">604 : WBN</option>
                                     <option id="605" value="605">605 : WSM</option>
                                     <option id="606" value="606">606 : WSY</option>
-                                    <option id="607" value="607">607 : WMK</option>
+                                    <option id="607" value="607">607 : WMK</option>text
                                     <option id="608" value="608">608 : WDR</option>
                                     <option id="609" value="609">609 : WBJ</option>
                                     <option id="610" value="610">610 : WJS</option>
@@ -213,11 +215,10 @@
                                     <option id="618" value="618">618 : WMA</option>
                             </select>
                             <input type="hidden"  id="table" name="table" value="sentra">
-                            <input type="hidden"  id="id" name="id">
                         </div>
                         <div class="mb-3">
                             <label for="id_sentra" class="form-label">ID SENTRA :</label>
-                            <input type="text" class="form-control" id="id_sentra" name="id_sentra" required>
+                            <input type="text" class="form-control" id="id_sentra" name="id_sentra" required >
                         </div>
                         <div class="mb-3">
                             <label for="kd_sentra" class="form-label">KODE SENTRA :</label>
@@ -249,7 +250,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Edit</button>
                         </div>
                         </div>
                     </div>

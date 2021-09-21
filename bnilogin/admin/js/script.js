@@ -143,6 +143,31 @@ $(function(){
             } else {
                 $('#T_AKTIF').attr('selected',true);
             }
+        }else if($(this).data('href') == "risiko"){
+            // $('#exampleModalSentra').html('Edit Sektor');
+            // $('.modal-footer button[type=submit]').html('Edit');
+            var id_wil = $('.id_wil'+position).text();
+            var id_sentra = $('.id_sentra'+position).text();
+            var kd_sentra = $('.kd_sentra'+position).text();
+            var nm_sentra = $('.nm_sentra'+position).text();
+            var tipe_sentra = $('.tipe_sentra'+position).text();
+            var status = $('.status'+position).text();
+            // $('#form').attr('action','../../edit.php');
+            // $('#id').show(); // baru
+            // $('#idtambah').hide(); // baru
+            $('#kodeid').show();
+            $('#kodeid').text(position); // baru
+            $('#id').val(position); // baru
+            $("#"+id_wil).attr(id_wil);
+            $('#id_sentra').val(id_sentra);
+            $('#kd_sentra').val(kd_sentra);
+            $('#nm_sentra').val(nm_sentra);
+            $('#'+tipe_sentra).attr('selected',true);
+            if(status == "AKTIF"){
+                $('#AKTIF').attr('selected',true);
+            } else {
+                $('#T_AKTIF').attr('selected',true);
+            }
         }else if($(this).data('href') == "Pa"){
             $('#exampleModalPa').html('Edit Sektor');
             $('.modal-footer button[type=submit]').html('Edit');
