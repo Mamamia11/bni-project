@@ -62,6 +62,13 @@
     }
 
 
+    function changeValue($id)
+    {
+        global $conn;
+        $query = "SELECT*FROM perspective JOIN format_perspective ON perspective.ID_PERSPECTIVE=format_perspective.id_perspective WHERE format_perspective.id_format=$id";
+        $result = mysqli_query($conn, $query);
+        return $result;
+    }
 
     // Tambah
     function tambah($data){

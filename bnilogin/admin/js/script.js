@@ -133,7 +133,7 @@ $(function(){
             $('#kodeid').show();
             $('#kodeid').text(position); // baru
             $('#id').val(position); // baru
-            $("#"+id_wil).attr(id_wil);
+            $("#"+id_wil).attr("selected",true);
             $('#id_sentra').val(id_sentra);
             $('#kd_sentra').val(kd_sentra);
             $('#nm_sentra').val(nm_sentra);
@@ -151,6 +151,7 @@ $(function(){
             var kd_sentra = $('.kd_sentra'+position).text();
             var nm_sentra = $('.nm_sentra'+position).text();
             var tipe_sentra = $('.tipe_sentra'+position).text();
+            console.log(tipe_sentra);
             var status = $('.status'+position).text();
             // $('#form').attr('action','../../edit.php');
             // $('#id').show(); // baru
@@ -158,7 +159,7 @@ $(function(){
             $('#kodeid').show();
             $('#kodeid').text(position); // baru
             $('#id').val(position); // baru
-            $("#"+id_wil).attr(id_wil);
+            $("#"+id_wil).attr("selected",true);
             $('#id_sentra').val(id_sentra);
             $('#kd_sentra').val(kd_sentra);
             $('#nm_sentra').val(nm_sentra);
@@ -227,4 +228,6 @@ $(function(){
         $('.default-value'+position).attr('selected',true);
         $('#order'+position).attr('disabled',true);
     })
+    console.log($('.nperspective'));
+
 });

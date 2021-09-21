@@ -161,23 +161,11 @@
 		                <?=$kode['nm_format']?></a>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-primary tambahDatas" data-id="<?=$kode['id_format']?>" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$kode['id_format']?>">
                             <i class="fa fa-map-pin"></i>
                             <span>View</span>
                         </button>
-                        </td>                   
-                     </tr>
-                <?php
-                    }
-                    $id = $kode['id_format']+1;
-                ?>
-            </tbody>
-
-
-        </table>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal<?=$kode['id_format']?>" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
@@ -191,10 +179,12 @@
                                 <th>PERSPECTIVE</th>
                             </tr>
                             <?php
-                                foreach ($kodesektor as $key => $p) {
+                                $order = changeValue($kode['id_format']);
+                                foreach ( $order as $p) {
                                     ?>
                                         <tr>
                                             <td><?=$p['PERSPECTIVE']?></td>
+                                            <td><?=$p['order_perspective']?></td>
                                         </tr>
                                     <?php
                                 }
@@ -208,6 +198,19 @@
                         </div>
                     </div>
                     </div>
+                        </td>                   
+                     </tr>
+                     
+                <?php
+                
+                    }
+                    $id = $kode['id_format']+1;
+                ?>
+            </tbody>
+
+
+        </table>
+
         
 
         <button type="button" class="btn btn-primary format" data-bs-toggle="modal" data-bs-target="#tambahFormat">
