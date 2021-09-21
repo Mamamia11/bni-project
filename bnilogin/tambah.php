@@ -8,7 +8,7 @@
             echo "
             <script>
                 alert ('Data berhasil ditambah');
-               document.location.href = 'admin/". $_POST['folder'] ."/". $_POST['table'] .".php'
+               document.location.href = 'admin/konfigurasiUnit/". $_POST['table'] .".php'
             </script>
         ";
     }else {

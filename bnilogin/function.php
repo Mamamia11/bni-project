@@ -52,8 +52,8 @@
                     $values =  "id_cab='" . $data['id_cab']. "',kd_cab='" . $data['kd_cab']. "',nm_cab='" . $data['nm_cab']. "',status='" . $data['status']. "'";
                     break; 
 
-            //     default :
-            //         break;
+                default :
+                    break;
         }
         // $query = "UPDATE `$table` SET $values WHERE id=".$data['id']."";
         $query = "UPDATE `$table` SET $values WHERE id=$id";
