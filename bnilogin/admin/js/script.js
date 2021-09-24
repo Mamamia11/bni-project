@@ -190,7 +190,7 @@ $(function(){
                 $('#T_AKTIF').attr('selected',true);
             }
         }else if($(this).data('href') == "cabangln"){
-            $('#exampleModalCabangLn').html('Edit Sektor');
+            $('#formModalCabangLn').html('Edit Sektor');
             $('.modal-footer button[type=submit]').html('Edit');
             var id_cab = $('.id_cab'+position).text();
             var kd_cab = $('.kd_cab'+position).text();
