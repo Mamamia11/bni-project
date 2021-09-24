@@ -160,8 +160,8 @@
                     <td> <?= $i; ?> </td>
                     <td class="PERSPECTIVE<?= $kode['ID_PERSPECTIVE'];?>"><?= $kode['PERSPECTIVE']?> </td>
                     <td>
-                    <a href="../../edit.php?id=<?= $kode["ID_PERSPECTIVE"]; ?>" class="editData btn btn-md btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>&nbsp;
-                    <a href="../../clean.php?id=<?= $kode["ID_PERSPECTIVE"];?>&table=perspective" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a href="../../edit.php?id=<?= $kode["ID_PERSPECTIVE"]; ?>&folder=konfigurasiKpi" data-bs-toggle="modal" data-bs-target="#exampleModalPerspective" data-id="<?= $kode["ID_PERSPECTIVE"] ?>" data-href="perspective" class="editData btn btn-md btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>&nbsp;
+                    <a href="../../clean.php?id=<?= $kode["ID_PERSPECTIVE"];?>&folder=konfigurasiKpi&table=perspective" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>  
                     <?php $i++ ?>
                     <?php endforeach; ?> 
@@ -178,6 +178,35 @@
         <input type="text" name="PERSPECTIVE" id="PERSPECTIVE" required>
         <input type="hidden" name="table" id="table" value="perspective">
         <input type="submit" class="tambahData" name="submit" id="submit" value="tambah">
+
+         <!-- Modal -->
+         <div class="modal fade" id="exampleModalPerspective" tabindex="-1" aria-labelledby="formModalLabelPers" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="formModalLabelPers">Input Sektor</h5>
+                            <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="id" class="form-label">ID PERSPECTIVE : <span id="idtambah"><?=$kode['ID_PERSPECTIVE']?></span><span  id="kodeid"></span> </label>
+                            </div>
+                        <div class="mb-3">
+                            <label for="kd_sektor" class="form-label">PERSPECTIVE NAME</label>
+                            <input type="text" class="form-control" id="kd_sektor" name="kd_sektor" required>
+                            <input type="hidden"  id="table" name="table" value="sektor">
+                            <input type="hidden"  id="id" name="id">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="close" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+
     </form>
 
         

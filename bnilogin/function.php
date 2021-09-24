@@ -17,9 +17,13 @@
     // Hapus
     function clean($id, $table){
         global $conn;
-        
-        mysqli_query($conn , "DELETE FROM $table WHERE id = $id");
+        if($table == "perspective"){
+        mysqli_query($conn , "DELETE FROM $table WHERE ID_PERSPECTIVE = $id");
+        }else{
+            mysqli_query($conn , "DELETE FROM $table WHERE id = $id");
+        }
         return mysqli_affected_rows($conn);
+
     } 
 
     function edit($data){
@@ -51,6 +55,9 @@
             case 'cabangln':
                     $values =  "id_cab='" . $data['id_cab']. "',kd_cab='" . $data['kd_cab']. "',nm_cab='" . $data['nm_cab']. "',type_cab='".$data['type_cab']."',status='" . $data['status']. "'";
                     break; 
+            case 'perspective':
+                    $values = "ID_PERSPECTIVE='". $data['ID_PERSPECTIVE'] ."',PERSPECTIVE='". $data['PERSPECTIVE'] ."'";
+                    break;
         }
 
         $query = "UPDATE `$table` SET $values WHERE id=$id";

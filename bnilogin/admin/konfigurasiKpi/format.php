@@ -183,8 +183,8 @@
                                 foreach ( $order as $p) {
                                     ?>
                                         <tr>
+                                        <td><?=$p['order_perspective']?></td>
                                             <td><?=$p['PERSPECTIVE']?></td>
-                                            <td><?=$p['order_perspective']?></td>
                                         </tr>
                                     <?php
                                 }
