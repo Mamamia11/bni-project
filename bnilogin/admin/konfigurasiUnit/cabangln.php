@@ -161,12 +161,12 @@
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td><?= $kode["id_cab"];?> </td>
-                        <td><?= $kode["kd_cab"];?></td>
-                        <td><?= $kode["nm_cab"];?></td>
-                        <td><?= $kode["status"];?></td>
+                        <td class="id_cab<?= $kode['id']?>"><?= $kode["id_cab"];?> </td>
+                        <td class="kd_cab<?= $kode['id']?>"><?= $kode["kd_cab"];?></td>
+                        <td class="nm_cab<?= $kode['id']?>"><?= $kode["nm_cab"];?></td>
+                        <td class="status<?= $kode['id']?>"><?= $kode["status"];?></td>
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=cabangln" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-id="<?= $kode["id"]?>" data-bs-target="#modalCabangLn" data-href="cabangln" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
@@ -174,34 +174,36 @@
             </table>
             <br>
             <br>
-            <form action="../../tambah.php" method="POST">
+            <form id="form" action="../../tambah.php" method="POST">
                     <!-- Button trigger modal -->
                     <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#modalCabangLn">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Sektor</span>
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalCabangLn" tabindex="-1" aria-labelledby="formModalCabangLn" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Input Cabang Ln</h5>
+                            <h5 class="modal-title" id="formModalCabangLn">Input Cabang Ln</h5>
                             <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Data : <?= $kode["id"];?> </label>
+                            <label for="id" class="form-label">ID Data : <span id="idtambah"><?=$kode['id'];?></span><span  id="kodeid"></span> </label>
                             </div>
                         <div class="mb-3">
                             <label for="id_cab" class="form-label">ID Cabang</label>
                             <input type="text" class="form-control" id="id_cab" name="id_cab" required>
                             <input type="hidden"  id="table" name="table" value="cabangln">
+                            <input type="hidden"  id="id" name="id">
                             </div>
                         <div class="mb-3">
                             <label for="kd_cab" class="form-label">Kode Cabang</label>
                             <input type="text" class="form-control" id="kd_cab" name="kd_cab" required>
+                            <input type="hidden" id="type_cab" name="type_cab">
                             </div>
                         <div class="mb-3">
                             <label for="nm_cab" class="form-label">Nama Cabang</label>

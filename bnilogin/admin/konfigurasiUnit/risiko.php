@@ -171,7 +171,7 @@
                         <td class="tipe_sentra<?=$kode['id']?>"><?= $kode["tipe_sentra"];?></td>
                         <td class="status<?=$kode['id']?>"><?= $kode["status"];?></td>
                         <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=risiko" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp; 
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-bs-target="#modalSentra" data-id="<?= $kode["id"] ?>" data-href="risiko" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-bs-target="#modalRisiko" data-id="<?= $kode["id"] ?>" data-href="risiko" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
@@ -180,16 +180,16 @@
 
         <form id="form" action="../../edit.php" method="POST">
         <!-- Modal -->
-        <div class="modal fade" id="modalSentra" tabindex="-1" aria-labelledby="exampleModalSentra" aria-hidden="true">
+        <div class="modal fade" id="modalRisiko" tabindex="-1" aria-labelledby="exampleModalRisiko" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalSentra">Edit Sentra</h5>
+                            <h5 class="modal-title" id="exampleModalRisiko">Edit Sentra</h5>
                             <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Data : </label>
+                            <label for="id" class="form-label">ID Data : <span id="kodeid"></span> </label>
                             <input type="hidden"  id="id" name="id" value="<?= $kode['id']; ?>">
                             </div>
                         <div class="mb-3">
@@ -202,7 +202,7 @@
                                     <option id="604" value="604">604 : WBN</option>
                                     <option id="605" value="605">605 : WSM</option>
                                     <option id="606" value="606">606 : WSY</option>
-                                    <option id="607" value="607">607 : WMK</option>text
+                                    <option id="607" value="607">607 : WMK</option>
                                     <option id="608" value="608">608 : WDR</option>
                                     <option id="609" value="609">609 : WBJ</option>
                                     <option id="610" value="610">610 : WJS</option>
@@ -214,7 +214,7 @@
                                     <option id="617" value="617">617 : WYK</option>
                                     <option id="618" value="618">618 : WMA</option>
                             </select>
-                            <input type="hidden"  id="table" name="table" value="sentra">
+                            <input type="hidden"  id="table" name="table" value="risiko">
                         </div>
                         <div class="mb-3">
                             <label for="id_sentra" class="form-label">ID SENTRA :</label>
@@ -229,13 +229,12 @@
                             <input type="text" class="form-control" id="nm_sentra" name="nm_sentra" required>
                         </div>
                             <div class="form-group">
-                                <label for="tipe_sentra">TIPE SENTRA :</label>
+                                <label for="tipe_sentra">TIPE SENTRA : </label>
                                 <br>
                                 <select class="form-select" id="tipe_sentra" name="tipe_sentra" required>
                                     <option value=""><strong>-Pilih Tipe SENTRA-</strong></option>
-                                    <option id="SKM" value="SKM">SKM</option>
-                                    <option id="SKC" value="SKC">SKC</option>
-                                    <option id="LNC" value="LNC">LNC</option>
+                                    <option id="RBW" value="RBW">RBW</option>
+                                    <option id="RBC" value="RBC">RBC</option>
                                 </select>
                             </div>
                             <div class="form-group">
