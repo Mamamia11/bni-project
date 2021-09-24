@@ -128,18 +128,20 @@
 
             </div>
         </nav>
-        <input name="tambah_tahun" type="button" id="ShowHidBut" value="Tambah Tahun" onclick="ShowHid()">
+        <input name="tambah_tahun" type="button" id="ShowHidBut" value="Tambah Tahun">
         <div id="divDisplay" style="display: none;">
-            <form id="form2" name="form2" method="post" action="" style="background-color:#FFFFFF">
+            <form id="form2" name="form2" method="post" action="../../tambah.php" style="background-color:#FFFFFF">
             <p></p>
             <table width="246" border="0" style="margin:0 inherit;border-collapse:collapse" class="style1">
                 <tbody>
                     <tr>
                         <td>
                             <input name="tahun" type="text" id="tahun" >
+                            <input name="table" type="text" hidden value="kpisub" >
+                            <input name="folder" type="text" hidden value="konfigurasiKpi">
                         </td>
                         <td>
-                            <input type="submit" name="Submit2" value="Submit">
+                            <input type="submit" name="submit" value="Submit">
                         </td>
                     </tr>
                     
@@ -150,19 +152,30 @@
         <br>
         <br>
         <table width="140" border="0" style="margin:0 inherit;border-collapse:collapse; background-color:#FFFFFF" class="style1">
-                        <tbody><tr height="30">
+                        <tbody>
+                            <?php
+                                foreach ($kodesektor as $key => $tahun) {
+                                    ?>
+<tr height="30">
                         <td width="14">»</td>&nbsp;
-                        <td width="114">2020</td>
+                        <td width="114"><?=$tahun['tahun']?></td>
                         <td width="33">
                         <div align="center">
-                            <input type="submit" name="Submit" value="Go" id="ShowHidBut1" onclick="ShowHid1()">
+                            <input type="submit" name="Submit" value="Go" data-id="<?=$key?>" class="ShowHidBut1">
                         </div>    
                         </td>
                     </tr>
+                                    <?php
+                                }
+                            ?>
+                            
                     </tbody>
                 </table>
 
-                <div id="divDisplay1" style="display: none;">
+                <?php
+                    foreach ($kodesektor as $key => $tahun) {
+                        ?>
+                <div id="divDisplay<?=$key?>" style="display: none;">
                 <table class="table table-stripped table-bordered" id="myTable">
                 <thead>
                     <td>NO</td>
@@ -197,6 +210,9 @@
                     </button>
                 </div>
 
+                <?php
+                    }
+                ?>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
@@ -264,12 +280,7 @@
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });
-    });
-</script>
-<script type="text/javascript">
-	
-
-	function input_detil(id1,id2,id3,id4) {
+        function input_detil(id1,id2,id3,id4) {
 		var id_tahun = id1;
 		var id_page = id2;
 		var username = id3;
@@ -277,30 +288,34 @@
 		window.location = "ris_pmg_config_unit_sub_type_process.php?id_tahun="+id_tahun+"&&id="+id_page+"&&npp="+username+"&&tahun="+tahun;
 	}
 	
-	function ShowHid() {
-		var x = document.getElementById("divDisplay");
-		var y = document.getElementById("ShowHidBut").value;
-    	if (x.style.display == "none") {
-        	x.style.display = "block";
-			document.getElementById("ShowHidBut").value = "Sembuyikan";
+    $('#ShowHidBut').on('click',function(){
+		var x = $("#divDisplay");
+    	if (x.css('display') == "none") {
+        	x.css({'display':'block'});
+            $("#ShowHidBut").val("Sembuyikan");
     	} else {
-        	x.style.display = "none";
-			document.getElementById("ShowHidBut").value = "Tambah Tahun";
+        	x.css({'display':'none'});
+			$("#ShowHidBut").val("Tambah Tahun");
     	}
-		/*alert(y);*/
-	}
-    function ShowHid1() {
-		var x = document.getElementById("divDisplay1");
-		var y = document.getElementById("ShowHidBut1").value;
-    	if (x.style.display == "none") {
-        	x.style.display = "block";
-			document.getElementById("ShowHidBut1").value = "Sembuyikan";
+	})
+
+    $('.ShowHidBut1').on('click',function(){
+        var position = $(this).attr('data-id');
+        var x = $("#divDisplay"+position);
+    	if (x.css('display') == "none") {
+        	x.css({'display':'block'});
+            $(this).val("Sembuyikan");
     	} else {
-        	x.style.display = "none";
-			document.getElementById("ShowHidBut1").value = "Go";
+        	x.css({'display':'none'});
+			$(this).val("Go");
     	}
-		/*alert(y);*/
-	}
+	})
+    });
+</script>
+<script type="text/javascript">
+	
+
+	
 </script>
 </body>
 
