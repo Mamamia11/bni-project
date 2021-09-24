@@ -52,6 +52,7 @@
                     $values =  "id_cab='" . $data['id_cab']. "',kd_cab='" . $data['kd_cab']. "',nm_cab='" . $data['nm_cab']. "',type_cab='".$data['type_cab']."',status='" . $data['status']. "'";
                     break; 
         }
+
         $query = "UPDATE `$table` SET $values WHERE id=$id";
         mysqli_query($conn, $query);
         return mysqli_affected_rows($conn);
@@ -95,7 +96,7 @@
                     $values =  "'', '".$data['id_cab']."', '".$data['kd_cab']."', '".$data['nm_cab']."','".$data['type_cab']."','".$data['status']."'";
                     break; 
             case 'perspective' :
-                    $values = "'', '".$data['ID_PERSPECTIVE']."','".$data['PERSPECTIVE']."','".$data['STATUS']."','".$data['ORDER_STATUS']."'";
+                    $values = "'', '".$data['PERSPECTIVE']."','".$data['STATUS']."','".$data['ORDER_STATUS']."'";
                 default :
                     break;
         }

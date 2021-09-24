@@ -158,7 +158,7 @@
                     <?php foreach ($kodesektor as $kode) : ?>
                 <tr>
                     <td> <?= $i; ?> </td>
-                    <td class="PERSPECTIVE<?= $kode['ID_PERSPECTIVE'];?>"> <?= $kode['PERSPECTIVE']?> </td>
+                    <td class="PERSPECTIVE<?= $kode['ID_PERSPECTIVE'];?>"><?= $kode['PERSPECTIVE']?> </td>
                     <td>
                     <a href="../../edit.php?id=<?= $kode["ID_PERSPECTIVE"]; ?>" class="editData btn btn-md btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>&nbsp;
                     <a href="../../clean.php?id=<?= $kode["ID_PERSPECTIVE"];?>&table=perspective" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
@@ -171,13 +171,13 @@
 
         <br>
         <br>
-    <form action="">
+    <form id="form" action="../../tambah.php" method="POST">
         <p>
           <strong>Tambah Perspective</strong>  
         </p>
-        <input type="file" name="perspective" id="perspective">
+        <input type="text" name="PERSPECTIVE" id="PERSPECTIVE" required>
         <input type="hidden" name="table" id="table" value="perspective">
-        <input type="submit" name="submit" id="submit" value="tambah">
+        <input type="submit" class="tambahData" name="submit" id="submit" value="tambah">
     </form>
 
         

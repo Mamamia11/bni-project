@@ -3,8 +3,7 @@
 
     $id = $_GET["id"];
     $table = $_GET['table'];
-
-
+    if($id == ["ID_PERSPECTIVE"]){
     if (clean($id,$table) > 0) {
         # code..
         echo "
@@ -22,5 +21,5 @@
 //         document.location.href = 'admin/konfigurasiUnit/$table.php'
 //     </script>
 // "; }
-
+}
 ?>

@@ -9,7 +9,7 @@
             </script>";
 	}
 
-    $kodesektor = query("SELECT*FROM kpi_unit");
+    $kodesektor = query("SELECT*FROM kpiunit");
 
 ?>
 <!DOCTYPE html>

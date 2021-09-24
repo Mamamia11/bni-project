@@ -11,13 +11,13 @@
                document.location.href = 'admin/konfigurasiUnit/". $_POST['table'] .".php'
             </script>
         ";
-    }else {
-        echo "
-        <script>
-            alert ('Data gagal ditambah');
-            document.location.href = 'admin/konfigurasiUnit/". $_POST['table'] .".php'
-        </script>
-"; 
+//     }else {
+//         echo "
+//         <script>
+//             alert ('Data gagal ditambah');
+//             document.location.href = 'admin/konfigurasiUnit/". $_POST['table'] .".php'
+//         </script>
+// "; 
 }
 } 
 ?>
