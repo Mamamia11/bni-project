@@ -154,8 +154,8 @@
                         <td class="nm_dir<?=$kode["id"]?>"><?= $kode["nm_dir"];?></td>
                         <td class="level_dir<?=$kode["id"]?>"><?= $kode["level_dir"];?></td>
                         <td class="status<?=$kode["id"]?>"><?= $kode["status"];?></td>
-                        <td><a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-bs-target="#exampleModal" class="editData btn btn-md btn-primary" data-id="<?= $kode["id"] ?>" data-href="sektor"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a>&nbsp;
-                        <a href="../../clean.php?id=<?= $kode["id"];?>&table=sektor" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                        <td><a href="../../edit.php?id=<?=$kode["id"];?>&folder=konfigurasiUnit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="editData btn btn-md btn-primary" data-id="<?= $kode["id"] ?>" data-href="sektor"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a>&nbsp;
+                        <a href="../../clean.php?id=<?= $kode["id"];?>&folder=konfigurasiUnit&table=sektor" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
@@ -188,6 +188,7 @@
                             <input type="text" class="form-control" id="kd_sektor" name="kd_sektor" required>
                             <input type="hidden"  id="table" name="table" value="sektor">
                             <input type="hidden"  id="id" name="id">
+                            <input name="folder" type="text" hidden value="konfigurasiUnit">
                             </div>
                         <div class="mb-3">
                             <label for="nm_sektor" class="form-label">Nama Sektor</label>
