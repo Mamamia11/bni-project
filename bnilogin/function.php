@@ -56,18 +56,17 @@
                     $values =  "id_cab='" . $data['id_cab']. "',kd_cab='" . $data['kd_cab']. "',nm_cab='" . $data['nm_cab']. "',type_cab='".$data['type_cab']."',status='" . $data['status']. "'";
                     break; 
             case 'perspective':
-                    $values = "ID_PERSPECTIVE='". $data['ID_PERSPECTIVE'] ."',PERSPECTIVE='". $data['PERSPECTIVE'] ."'";
+                    $values = "PERSPECTIVE='". $data['PERSPECTIVE'] ."'";
                     break;
                     
                     default:
                     break;
         }
         if($table == "perspective"){
-            $query = "UPDATE `$table` SET $values WHERE ID_PERSPECTIVE=$id";
+            $query = "UPDATE `$table` SET $values WHERE ID_PERSPECTIVE='$id'";
             }else{
                 $query = "UPDATE `$table` SET $values WHERE id=$id";
             }
-        
         mysqli_query($conn, $query);
         return mysqli_affected_rows($conn);
     }
