@@ -178,7 +178,7 @@
         <input type="text" name="PERSPECTIVE" id="PERSPECTIVE" required>
         <input type="hidden" name="table" id="table" value="perspective">
         <input type="submit" class="tambahData" name="submit" id="submit" value="tambah">
-
+    </form>
          <!-- Modal -->
          <div class="modal fade" id="exampleModalPerspective" tabindex="-1" aria-labelledby="formModalLabelPers" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -192,10 +192,11 @@
                             <label for="id" class="form-label">ID PERSPECTIVE : <span id="idtambah"><?=$kode['ID_PERSPECTIVE']?></span><span  id="kodeid"></span> </label>
                             </div>
                         <div class="mb-3">
-                            <label for="kd_sektor" class="form-label">PERSPECTIVE NAME</label>
-                            <input type="text" class="form-control" id="kd_sektor" name="kd_sektor" required>
+                            <label for="PERSPECTIVE" class="form-label">PERSPECTIVE NAME</label>
+                            <input type="text" class="form-control" id="PERSPECTIVE" name="PERSPECTIVE" required>
                             <input type="hidden"  id="table" name="table" value="sektor">
                             <input type="hidden"  id="id" name="id">
+                            <input name="folder" type="text" hidden value="konfigurasiKpi">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -207,7 +208,7 @@
                     </div>
                     </div>
 
-    </form>
+    <!-- </form> -->
 
         
     </div>

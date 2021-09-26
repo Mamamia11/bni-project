@@ -170,8 +170,8 @@
                         <td class="nm_sentra<?=$kode['id']?>"><?= $kode["nm_sentra"];?></td>
                         <td class="tipe_sentra<?=$kode['id']?>"><?= $kode["tipe_sentra"];?></td>
                         <td class="status<?=$kode['id']?>"><?= $kode["status"];?></td>
-                        <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=risiko" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp; 
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-bs-target="#modalRisiko" data-id="<?= $kode["id"] ?>" data-href="risiko" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&folder=konfigurasiUnit&table=risiko" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp; 
+                        <a href="../../edit.php?id=<?=$kode["id"];?>&folder=konfigurasiUnit" data-bs-toggle="modal" data-bs-target="#modalRisiko" data-id="<?= $kode["id"] ?>" data-href="risiko" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>

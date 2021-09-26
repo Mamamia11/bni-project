@@ -165,7 +165,7 @@
                         <td class="kd_cab<?= $kode['id']?>"><?= $kode["kd_cab"];?></td>
                         <td class="nm_cab<?= $kode['id']?>"><?= $kode["nm_cab"];?></td>
                         <td class="status<?= $kode['id']?>"><?= $kode["status"];?></td>
-                        <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=cabangln" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;
+                        <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&folder=konfigurasiUnit&table=cabangln" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;
                         <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-id="<?= $kode["id"]?>" data-bs-target="#modalCabangLn" data-href="cabangln" class="editData btn btn-md btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
@@ -199,6 +199,7 @@
                             <input type="text" class="form-control" id="id_cab" name="id_cab" required>
                             <input type="hidden"  id="table" name="table" value="cabangln">
                             <input type="hidden"  id="id" name="id">
+                            <input name="folder" type="text" hidden value="konfigurasiUnit">
                             </div>
                         <div class="mb-3">
                             <label for="kd_cab" class="form-label">Kode Cabang</label>

@@ -171,8 +171,8 @@
                         <td class="tipe_cab_1<?=$kode['id'];?>"><?= $kode["tipe_cab_1"];?></td>
                         <td class="tipe_cab_2<?=$kode['id'];?>"><?= $kode["tipe_cab_2"];?></td>
                         <td class="status<?=$kode['id'];?>"><?= $kode["status"];?></td>
-                        <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&table=cabang" onclick="return confirm('Hapus Data?');" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-bs-toggle="modal" data-bs-target="#modalCabang" data-href="cabang" data-id="<?= $kode["id"] ?>" class="editData btn btn-sm btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <td><a href="../../clean.php?id=<?= $kode["id"]; ?>&folder=konfigurasiUnit&table=cabang" onclick="return confirm('Hapus Data?');" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;
+                        <a href="../../edit.php?id=<?=$kode["id"];?>&folder=konfigurasiUnit" data-bs-toggle="modal" data-bs-target="#modalCabang" data-href="cabang" data-id="<?= $kode["id"] ?>" class="editData btn btn-sm btn-primary"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
@@ -201,6 +201,7 @@
                             <label for="id" class="form-label">ID Data : <span id="idtambah"><?= $kode['id'];?></span><span  id="kodeid"></span> </label>
                             <input type="hidden"  id="table" name="table" value="cabang">
                             <input type="hidden" id="id" name="id">    
+                            <input name="folder" type="text" hidden value="konfigurasiUnit">
                             </div>
                         <div class="mb-3">
                             <label for="id_wil" class="form-label">ID WILAYAH :</label>

@@ -180,8 +180,8 @@
                         <td class="level_divisi<?=$kode['id']?>"><?= $kode["level_divisi"];?></td>
                         <td class="status<?=$kode["id"]?>"><?= $kode["status"];?></td>
                         <td> 
-                        <a href="../../clean.php?id=<?= $kode["id"]; ?>&table=divisi" onclick="return confirm('Hapus Data?');" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> &nbsp;
-                        <a href="../../edit.php?id=<?=$kode["id"];?>" data-id="<?=$kode['id']?>" class="editData btn btn-sm btn-primary" data-href="divisi" data-bs-toggle="modal" data-bs-target="#modalBox"> <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                        <a href="../../clean.php?id=<?= $kode["id"]; ?>&folder=konfigurasiUnit&table=divisi" onclick="return confirm('Hapus Data?');" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> &nbsp;
+                        <a href="../../edit.php?id=<?=$kode["id"];?>&folder=konfigurasiUnit" data-id="<?=$kode['id']?>" class="editData btn btn-sm btn-primary" data-href="divisi" data-bs-toggle="modal" data-bs-target="#modalBox"> <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     <?php $i++; ?>
@@ -231,6 +231,7 @@
                             </select>
                             <input type="hidden"  id="table" name="table" value="divisi">
                             <input type="hidden"  id="id" name="id">
+                            <input name="folder" type="text" hidden value="konfigurasiUnit">
                         </div>
                         <div class="mb-3">
                             <label for="kd_divisi" class="form-label">Kode Divisi :</label>
