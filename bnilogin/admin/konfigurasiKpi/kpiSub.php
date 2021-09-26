@@ -9,7 +9,7 @@
             </script>";
 	}
 
-    $kodesektor = query("SELECT * FROM tahun_sub")
+    $kodesektor = query("SELECT * FROM tahun_sub");
 
 ?>
 <!DOCTYPE html>

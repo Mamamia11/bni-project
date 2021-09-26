@@ -112,7 +112,7 @@
             case 'perspective' :
                     $values = "'', '".$data['PERSPECTIVE']."','".$data['STATUS']."','".$data['ORDER_STATUS']."'";
                     break;
-            case 'kpisub' :
+            case 'tahun_sub' :
                 $values = "'', '".$data['tahun']."'";
                 break;
             case 'kpiunit':
@@ -137,6 +137,7 @@
             }
         }
         return mysqli_affected_rows($conn);
+        
     }
     
 
