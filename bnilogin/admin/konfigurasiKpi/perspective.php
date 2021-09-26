@@ -180,7 +180,7 @@
         <input type="submit" class="tambahData" name="submit" id="submit" value="tambah">
     </form>
     
-    <form action="../../edit.php" method="POST">
+    <form id="form" action="../../edit.php" method="POST">
          <!-- Modal -->
          <div class="modal fade" id="exampleModalPerspective" tabindex="-1" aria-labelledby="formModalLabelPers" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -196,7 +196,7 @@
                         <div class="mb-3">
                             <label for="PERSPECTIVE" class="form-label">PERSPECTIVE NAME</label>
                             <input type="text" class="form-control" id="PERSPECTIVE" name="PERSPECTIVE" required>
-                            <input type="hidden"  id="table" name="table" value="sektor">
+                            <input type="hidden"  id="table" name="table" value="perspective">
                             <input type="hidden"  id="id" name="id">
                             <input name="folder" type="text" hidden value="konfigurasiKpi">
                             </div>

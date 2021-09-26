@@ -58,9 +58,16 @@
             case 'perspective':
                     $values = "ID_PERSPECTIVE='". $data['ID_PERSPECTIVE'] ."',PERSPECTIVE='". $data['PERSPECTIVE'] ."'";
                     break;
+                    
+                    default:
+                    break;
         }
-
-        $query = "UPDATE `$table` SET $values WHERE id=$id";
+        if($table == "perspective"){
+            $query = "UPDATE `$table` SET $values WHERE ID_PERSPECTIVE=$id";
+            }else{
+                $query = "UPDATE `$table` SET $values WHERE id=$id";
+            }
+        
         mysqli_query($conn, $query);
         return mysqli_affected_rows($conn);
     }

@@ -214,11 +214,12 @@ $(function(){
             $('.modal-footer button[type=submit]').html('Edit');
             var ID_PERSPECTIVE = $('.ID_PERSPECTIVE'+position).text();
             var PERSPECTIVE = $('.PERSPECTIVE'+position).text();
+            $('#form').attr('action','../../edit.php?folder=konfigurasiKpi');
             // $('#idtambah').hide(); // baru
             $('#kodeid').show();
             $('#kodeid').text(position); // baru
-            $('#ID_PERSPECTIVE').val(position); // baru
-            // $('#ID_PERSPECTIVE').val(ID_PERSPECTIVE);
+            // $('#ID_PERSPECTIVE').val(position); // baru
+            $('#ID_PERSPECTIVE').val(ID_PERSPECTIVE);
             $('#PERSPECTIVE').val(PERSPECTIVE);
         }
     });
