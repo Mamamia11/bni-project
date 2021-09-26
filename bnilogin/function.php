@@ -114,12 +114,16 @@
             case 'tahun_sub' :
                 $values = "'', '".$data['tahun']."'";
                 break;
+            case 'kpisub':
+                    $values = "'','". $data['UNIT_TYPE'] ."','". $data['UNIT_SUB_TYPE'] ."','". $data['ALIAS'] ."'";
+                    break;
             case 'kpiunit':
                 $values = "'', '".$data['level']."','". $data['unit'] ."'";
                 break;
                 default :
                     break;
         }
+        
 
         if($table !== "format_perspective"){
             $query = "INSERT INTO $table VALUES ($values)";
@@ -135,6 +139,7 @@
                 mysqli_query($conn, $query);
             }
         }
+        var_dump($query);
         return mysqli_affected_rows($conn);
         
     }

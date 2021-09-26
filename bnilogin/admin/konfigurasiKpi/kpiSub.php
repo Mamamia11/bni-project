@@ -137,7 +137,7 @@
                     <tr>
                         <td>
                             <input name="tahun" type="text" id="tahun" >
-                            <input name="table" type="text" hidden value="tahun_sub" >
+                            <input name="table" type="text" hidden value="tahun_sub">
                             <input name="folder" type="text" hidden value="konfigurasiKpi">
                         </td>
                         <td>
@@ -218,7 +218,7 @@
                 <?php
                     }
                 ?>
-
+                <form action="../../tambah.php" method="POST">
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -233,7 +233,7 @@
                                 <br>
                                 <label for="nama">Unit Type :</label>
                                 <br>
-                                <select class="form-select" id="nama" name="nama" required>
+                                <select class="form-select" id="UNIT_TYPE" name="UNIT_TYPE" required>
                                     <option value=""><strong>-Pilih Nama-</strong></option>
                                     <option id="BNI WIDE" value="BNI WIDE">BNI WIDE</option>
                                     <option id="SEKTOR" value="SEKTOR">SEKTOR</option>
@@ -254,8 +254,9 @@
                                 <div class="mb-3">
                                 <label for="UNIT_SUB_TYPE" class="form-label">Unit Sub Type :</label>
                                 <input type="text" class="form-control" id="UNIT_SUB_TYPE" name="UNIT_SUB_TYPE" required>
-                                <input type="hidden"  id="table" name="table" value="kpiSub">
+                                <input type="hidden"  id="table" name="table" value="kpisub">
                                 <input type="hidden"  id="id" name="id">
+                                <input name="folder" type="text" hidden value="konfigurasiKpi">
                                 </div>
                                 <div class="mb-3">
                                 <label for="ALIAS" class="form-label">Alias</label>
@@ -266,6 +267,7 @@
                                 <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
                         </div>
                         </div>
+                        </form>
         
     </div>
 </div>
