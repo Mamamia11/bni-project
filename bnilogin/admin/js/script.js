@@ -218,8 +218,7 @@ $(function(){
             // $('#idtambah').hide(); // baru
             $('#kodeid').show();
             $('#kodeid').text(position); // baru
-            // $('#ID_PERSPECTIVE').val(position); // baru
-            $('#ID_PERSPECTIVE').val(ID_PERSPECTIVE);
+            $('#id').val(position); // baru
             $('#PERSPECTIVE').val(PERSPECTIVE);
         }
     });
