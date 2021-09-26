@@ -105,7 +105,7 @@
             case 'perspective' :
                     $values = "'', '".$data['PERSPECTIVE']."','".$data['STATUS']."','".$data['ORDER_STATUS']."'";
                     break;
-            case 'kpisub' :
+            case 'tahun_sub' :
                 $values = "'', '".$data['tahun']."'";
                 break;
                 default :

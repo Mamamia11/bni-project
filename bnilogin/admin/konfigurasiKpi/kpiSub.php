@@ -137,7 +137,7 @@
                     <tr>
                         <td>
                             <input name="tahun" type="text" id="tahun" >
-                            <input name="table" type="text" hidden value="kpisub" >
+                            <input name="table" type="text" hidden value="tahun_sub" >
                             <input name="folder" type="text" hidden value="konfigurasiKpi">
                         </td>
                         <td>
@@ -186,8 +186,11 @@
                     <td>AKSI</td>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($kodesektor as $kode) : ?>
+                    <?php 
+                    $i = 1; 
+                    $kodesektor2 = query("SELECT * FROM kpisub WHERE TAHUN = ".$tahun['tahun']."");
+                    foreach ($kodesektor2 as $key => $kode) {
+                        ?>
                  <tr>
                     <td> <?= $i; ?> </td>
                     <td class="LEVEL_UNIT <?= $kode['ID_DATA']; ?>"> <?= $kode['LEVEL_UNIT'];?> </td>
@@ -197,8 +200,10 @@
                     <td>
                     <a href="../../clean.php?id=<?= $kode["ID_DATA"];?>&table=perspective" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>   
-                     <?php $i++ ?>
-                    <?php endforeach; ?> 
+                     <?php
+                      $i++;
+                    }
+                       ?> 
                 </tr> 
                  </tbody>
                 </table>

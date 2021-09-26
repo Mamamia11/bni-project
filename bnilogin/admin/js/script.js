@@ -22,7 +22,7 @@ $(function(){
             var nm_dir = $('.nm_dir'+position).text();
             var level_dir = $('.level_dir'+position).text();
             var status = $('.status'+position).text();
-            $('#form').attr('action','../../edit.php');
+            $('#form').attr('action','../../edit.php?folder=konfigurasiUnit');
             // $('#id').show(); // baru
             $('#idtambah').hide(); // baru
             $('#kodeid').show();
@@ -47,7 +47,7 @@ $(function(){
             var tipe_divisi = $('.tipe_divisi'+position).text();
             var level_divisi = $('.level_divisi'+position).text();
             var status = $('.status'+position).text();
-            $('#form').attr('action','../../edit.php');
+            $('#form').attr('action','../../edit.php?folder=konfigurasiUnit');
             $("#"+kd_sektor).attr('selected',true);
             // $('#id').show(); // baru
             $('#idtambah').hide(); // baru
@@ -72,7 +72,7 @@ $(function(){
             var nm_wil = $('.nm_wil'+position).text();
             var nm_ceo = $('.nm_ceo'+position).text();
             var status = $('.status'+position).text();
-            $('#form').attr('action','../../edit.php');
+            $('#form').attr('action','../../edit.php?folder=konfigurasiUnit');
             $('#id').show(); // baru
             $('#kodeid').show();
             $('#idtambah').hide(); // baru
@@ -97,7 +97,7 @@ $(function(){
             var tipe_cab_1 = $('.tipe_cab_1'+position).text();
             var tipe_cab_2 = $('.tipe_cab_2'+position).text();
             var status = $('.status'+position).text();
-            $('#form').attr('action','../../edit.php');
+            $('#form').attr('action','../../edit.php?folder=konfigurasiUnit');
             $("#"+id_wil).attr('selected',true);
             // $('#id').show(); // baru
             $('#kodeid').show();
@@ -127,7 +127,7 @@ $(function(){
             var nm_sentra = $('.nm_sentra'+position).text();
             var tipe_sentra = $('.tipe_sentra'+position).text();
             var status = $('.status'+position).text();
-            $('#form').attr('action','../../edit.php');
+            $('#form').attr('action','../../edit.php?folder=konfigurasiUnit');
             // $('#id').show(); // baru
             $('#idtambah').hide(); // baru
             $('#kodeid').show();
@@ -176,7 +176,7 @@ $(function(){
             var nm_pa = $('.nm_pa'+position).text();
             var nm_dir = $('.nm_dir'+position).text();
             var status = $('.status'+position).text();
-            $('#form').attr('action','../../edit.php');
+            $('#form').attr('action','../../edit.php?folder=konfigurasiUnit');
             $('#idtambah').hide(); // baru
             $('#kodeid').show();
             $('#kodeid').text(position); // baru
@@ -196,7 +196,7 @@ $(function(){
             var kd_cab = $('.kd_cab'+position).text();
             var nm_cab = $('.nm_cab'+position).text();
             var status = $('.status'+position).text();
-            $('#form').attr('action','../../edit.php');
+            $('#form').attr('action','../../edit.php?folder=konfigurasiUnit');
             $('#idtambah').hide(); // baru
             $('#kodeid').show();
             $('#kodeid').text(position); // baru

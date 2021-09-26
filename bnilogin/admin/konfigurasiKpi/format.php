@@ -181,12 +181,14 @@
                             <?php
                                 $order = changeValue($kode['id_format']);
                                 foreach ( $order as $p) {
+                                    if($p['order_perspective'] != 0){
                                     ?>
                                         <tr>
                                         <td><?=$p['order_perspective']?></td>
                                             <td><?=$p['PERSPECTIVE']?></td>
                                         </tr>
                                     <?php
+                                    }
                                 }
                             ?>
                         </table>
