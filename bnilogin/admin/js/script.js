@@ -209,6 +209,17 @@ $(function(){
             } else {
                 $('#T_AKTIF').attr('selected',true);
             }
+        }else if($(this).data('href') == "perspective"){
+            $('#formModalLabelPers').html('Edit Sektor');
+            $('.modal-footer button[type=submit]').html('Edit');
+            var ID_PERSPECTIVE = $('.ID_PERSPECTIVE'+position).text();
+            var PERSPECTIVE = $('.PERSPECTIVE'+position).text();
+            // $('#idtambah').hide(); // baru
+            $('#kodeid').show();
+            $('#kodeid').text(position); // baru
+            $('#ID_PERSPECTIVE').val(position); // baru
+            // $('#ID_PERSPECTIVE').val(ID_PERSPECTIVE);
+            $('#PERSPECTIVE').val(PERSPECTIVE);
         }
     });
 

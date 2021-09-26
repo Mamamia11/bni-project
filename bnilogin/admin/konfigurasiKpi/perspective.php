@@ -171,14 +171,16 @@
 
         <br>
         <br>
-    <form id="form" action="../../tambah.php" method="POST">
+    <form  action="../../tambah.php" method="POST">
         <p>
           <strong>Tambah Perspective</strong>  
         </p>
-        <input type="text" name="PERSPECTIVE" id="PERSPECTIVE" required>
+        <input type="text" name="PERSPECTIVE"  required>
         <input type="hidden" name="table" id="table" value="perspective">
         <input type="submit" class="tambahData" name="submit" id="submit" value="tambah">
     </form>
+    
+    <form action="../../edit.php" method="POST">
          <!-- Modal -->
          <div class="modal fade" id="exampleModalPerspective" tabindex="-1" aria-labelledby="formModalLabelPers" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -189,7 +191,7 @@
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID PERSPECTIVE : <span id="idtambah"><?=$kode['ID_PERSPECTIVE']?></span><span  id="kodeid"></span> </label>
+                            <label for="id" class="form-label">ID PERSPECTIVE : <span  id="kodeid"></span> </label>
                             </div>
                         <div class="mb-3">
                             <label for="PERSPECTIVE" class="form-label">PERSPECTIVE NAME</label>
@@ -208,7 +210,7 @@
                     </div>
                     </div>
 
-    <!-- </form> -->
+    </form>
 
         
     </div>
