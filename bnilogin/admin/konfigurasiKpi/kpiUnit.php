@@ -185,13 +185,14 @@
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Sektor :<?= $kode['id'];?> <span  id="id_sektor"></span> </label>
+                            <label for="id" class="form-label">ID Sektor :<?= $kode['id'];?> </label>
                             </div>
                         <div class="mb-3">
                             <label for="kd_sektor" class="form-label">Unit</label>
-                            <input type="text" class="form-control" id="kpi_unit" name="kpi_unit" required>
-                            <input type="hidden"  id="table" name="table" value="kpi_unit">
+                            <input type="text" class="form-control" id="unit" name="unit" required>
+                            <input type="hidden"  id="table" name="table" value="kpiunit">
                             <input type="hidden"  id="id" name="id">
+                            <input name="folder" type="text" hidden value="konfigurasiKpi">
                             </div>
                         <div class="form-group">
                                 <label for="level">level</label>
