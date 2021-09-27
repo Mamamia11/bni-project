@@ -115,7 +115,7 @@
                 $values = "'', '".$data['tahun']."'";
                 break;
             case 'kpisub':
-                    $values = "'','". $data['UNIT_TYPE'] ."','". $data['UNIT_SUB_TYPE'] ."','". $data['ALIAS'] ."'";
+                    $values = "'','". $data['TAHUN'] ."','','','". $data['UNIT_TYPE'] ."','". $data['UNIT_SUB_TYPE'] ."','". $data['ALIAS'] ."'";
                     break;
             case 'kpiunit':
                 $values = "'', '".$data['level']."','". $data['unit'] ."'";
@@ -139,7 +139,7 @@
                 mysqli_query($conn, $query);
             }
         }
-        var_dump($query);
+        print_r($query);
         return mysqli_affected_rows($conn);
         
     }

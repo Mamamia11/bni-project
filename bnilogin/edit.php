@@ -10,12 +10,12 @@
             </script>
         ";
     }else {
-//         echo "
-//         <script>
-//             alert ('Data gagal diubah');
-//             document.location.href = 'admin/$folder/". $_POST['table'] .".php'
-//         </script>
-// "; 
+        echo "
+        <script>
+            alert ('Data gagal diubah');
+            document.location.href = 'admin/$folder/". $_POST['table'] .".php'
+        </script>
+"; 
 }
 } 
 ?>

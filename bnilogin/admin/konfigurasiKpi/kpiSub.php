@@ -209,7 +209,7 @@
                 </table>
                 <form id="form" action="../../tambah.php" method="POST">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary tambahData" data-id="<?=$tahun['tahun']?>" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Data</span>
                     </button>
@@ -256,6 +256,7 @@
                                 <input type="text" class="form-control" id="UNIT_SUB_TYPE" name="UNIT_SUB_TYPE" required>
                                 <input type="hidden"  id="table" name="table" value="kpisub">
                                 <input type="hidden"  id="id" name="id">
+                                <input type="hidden"  id="tahun" name="TAHUN">
                                 <input name="folder" type="text" hidden value="konfigurasiKpi">
                                 </div>
                                 <div class="mb-3">

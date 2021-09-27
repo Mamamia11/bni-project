@@ -6,6 +6,7 @@ $(function(){
         $('#form').attr('action','../../tambah.php');
         $('#kodeid').hide(); // baru
         $('#idtambah').show();// baru
+        $('input[name=TAHUN]').val("2020");
         $('.form-control').val("");// baru
         $('option').attr("selected",false);// baru
         $('textarea').val("");// baru
