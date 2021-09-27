@@ -232,7 +232,7 @@
                         <label for="Tambah Format"> <strong>Tambah Format</strong></label>
                         &nbsp;
                         <br>
-                        <input type="text" name="format" id="format">
+                        <input type="text" name="format" id="format" required>
                         <br>
                         <br>
                         <table class="table table-stripped table-bordered" id="myTable">

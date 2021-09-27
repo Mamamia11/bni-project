@@ -198,7 +198,7 @@
                     <td class="UNIT_SUB_TYPE <?= $kode['ID_DATA']; ?>"> <?= $kode['UNIT_SUB_TYPE'];?> </td>
                     <td class="ALIAS <?= $kode['ID_DATA']; ?>"> <?= $kode['ALIAS'];?></td>
                     <td>
-                    <a href="../../clean.php?id=<?= $kode["ID_DATA"];?>&table=perspective" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a href="../../clean.php?id=<?= $kode["ID_DATA"];?>&folder=konfigurasiKpi&table=kpisub" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>   
                      <?php
                       $i++;

@@ -19,6 +19,8 @@
         global $conn;
         if($table == "perspective"){
         mysqli_query($conn , "DELETE FROM $table WHERE ID_PERSPECTIVE = $id");
+        }else if($table == "kpisub"){
+            mysqli_query($conn , "DELETE FROM $table WHERE ID_DATA = $id");
         }else{
             mysqli_query($conn , "DELETE FROM $table WHERE id = $id");
         }
