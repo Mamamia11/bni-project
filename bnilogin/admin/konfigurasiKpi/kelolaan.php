@@ -216,7 +216,7 @@
                     <td class="jabatan <?= $kode['id']; ?>"> <?= $kode['jabatan'];?> </td>
                     <td class="npp <?= $kode['id']; ?>"> <?= $kode['npp'];?> </td>
                     <td class="nama <?= $kode['id']; ?>"> <?= $kode['nama'];?> </td>
-                    <td class="level_kelolaan <?= $kode['id']; ?>"> <?= $kode['level_kelolaan'];?> </td>
+                    <td class="unit_kelolaan <?= $kode['id']; ?>"> <?= $kode['unit_kelolaan'];?> </td>
                      <td>
                     <a href="../../clean.php?id=<?= $kode["id"];?>&folder=konfigurasiKpi&table=kelolaan" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>   

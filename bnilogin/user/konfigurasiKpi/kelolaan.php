@@ -1,7 +1,16 @@
 <?php 
 
     require '../../function.php';
+    
+    session_start();
+	if (empty($_SESSION['username'])) {
+		echo "<script>
+                alert('Maaf Anda Belum Login');
+				document.location = '../../login.php'
+            </script>";
+	}
 
+    $kodesektor = query("SELECT * FROM tahun_kelolaan");
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,14 +24,17 @@
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="../../assets/DataTables/datatables.min.css">
+
 <!-- Our Custom CSS -->
 <link rel="stylesheet" href="../css/style.css">
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="../favicon.ico">
 
 
 <!-- Font Awesome JS -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -133,6 +145,153 @@
             </div>
         </nav>
 
+  
+        <input name="tambah_tahun" type="button" id="ShowHidBut" value="Tambah Tahun">
+        <div id="divDisplay" style="display: none;">
+            <form id="form2" name="form2" method="post" action="../../tambah.php" style="background-color:#FFFFFF">
+            <p></p>
+            <table width="246" border="0" style="margin:0 inherit;border-collapse:collapse" class="style1">
+                <tbody>
+                    <tr>
+                        <td>
+                            <input name="tahun" type="text" id="tahun">
+                            <input name="table" type="text" hidden value="tahun_kelolaan">
+                            <input name="folder" type="text" hidden value="konfigurasiKpi">
+                        </td>
+                        <td>
+                            <input type="submit" name="submit" value="Submit">
+                        </td>
+                    </tr>
+                    
+            </tbody>
+        </table>
+            </form>
+        </div>
+
+        <br>
+        <br>
+
+        <table width="140" border="0" style="margin:0 inherit;border-collapse:collapse; background-color:#FFFFFF" class="style1">
+                        <tbody>
+                            <?php
+                                foreach ($kodesektor as $key => $tahun) {
+                             ?>
+                        <tr height="30">
+                        <td width="14">»</td>&nbsp;
+                        <td width="114"><?=$tahun['tahun']?></td>
+                        <td width="33">
+                        <div align="center">
+                            <input type="submit" name="Submit" value="Go" data-id="<?=$key?>" class="ShowHidBut1">
+                        </div>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                    </tbody>
+                </table>
+                
+                            
+        <?php
+         foreach ($kodesektor as $key => $tahun) {
+        ?>
+        <div id="divDisplay<?=$key?>" style="display: none;">
+        <table class="table table-stripped table-bordered" id="myTable">
+                <thead>
+                    <td>NO</td>
+                    <td>JABATAN</td>
+                    <td>NPP</td>
+                    <td>NAMA</td>
+                    <td>KELOLAAN</td>
+                    <td>AKSI</td>
+                </thead>
+                <tbody>
+                <?php 
+                    $i = 1; 
+                    $kodesektor2 = query("SELECT * FROM kelolaan WHERE tahun = ".$tahun['tahun']."");
+                    foreach ($kodesektor2 as $key => $kode) {
+                    ?>
+                 <tr>
+                    <td> <?= $i; ?> </td>
+                    <td class="jabatan <?= $kode['id']; ?>"> <?= $kode['jabatan'];?> </td>
+                    <td class="npp <?= $kode['id']; ?>"> <?= $kode['npp'];?> </td>
+                    <td class="nama <?= $kode['id']; ?>"> <?= $kode['nama'];?> </td>
+                    <td class="unit_kelolaan <?= $kode['id']; ?>"> <?= $kode['unit_kelolaan'];?> </td>
+                     <td>
+                    <a href="../../clean.php?id=<?= $kode["id"];?>&folder=konfigurasiKpi&table=kelolaan" onclick="return confirm('Hapus Data?');" class="btn btn-md btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>   
+                    <?php
+                      $i++;
+                        }
+                    ?> 
+                </tr> 
+                 </tbody>
+        </table>
+        <form id="form" action="../../tambah.php" method="POST">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary tambahData" data-id="<?=$tahun['tahun']?>" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fa fa-map-pin"></i>
+                   <span>Tambah Kelolaan</span>
+                    </button>
+        </div>
+        <?php
+            }
+        ?>
+        <br>
+        <br>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="formModalLabel">Input Kelolaan</h5>
+                            <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div class="mb-3">
+                        <div class="form-group container-fluid">
+                                <br>
+                                <label for="nama">Nama :</label>
+                                <br>
+                                <select class="form-select" id="nama" name="nama" required>
+                                    <option value=""><strong>-Pilih Nama-</strong></option>
+                                    <option id="Sandino" value="Sandino Vico">Sandino Vico</option>
+                                    <option id="Tanti" value="Tanti Kuswitarini">Tanti Kuswitarini</option>
+                                    <option id="Sri" value="Sri Handayani">Sri Handayani</option>
+                                    <option id="Anfamedhiarifda" value="Anfamedhiarifda">Anfamedhiarifda</option>
+                                    <option id="Nafi" value="M. Diyan Nafi Jauhari">M. Diyan Nafi Jauhari</option>
+                                    <option id="Fitria" value="Fitria Samertawati">Fitria Samertawati</option>
+                                    <option id="Maria" value="Maria Kristiani S.">Maria Kristiani S.</option>
+                                    <input type="hidden"  id="tahun" name="tahun">
+                                    <input type="hidden"  id="id" name="id">
+                                    <input name="folder" type="text" hidden value="konfigurasiKpi">
+                                    <input name="table" type="text" hidden value="kelolaan">
+
+                                </select>
+                                </div>
+                                <div class="form-group container-fluid">
+                                <br>
+                                <label for="nama">Kelolaan</label>
+                                <br>
+                                <select class="form-select" id="nama" name="nama" required>
+                                    <option value=""><strong>-Pilih Nama-</strong></option>
+                                    <option id="Sandino" value="Sandino Vico">Sandino Vico</option>
+                                    <option id="Tanti" value="Tanti Kuswitarini">Tanti Kuswitarini</option>
+                                    <option id="Sri" value="Sri Handayani">Sri Handayani</option>
+                                    <option id="Anfamedhiarifda" value="Anfamedhiarifda">Anfamedhiarifda</option>
+                                    <option id="Nafi" value="M. Diyan Nafi Jauhari">M. Diyan Nafi Jauhari</option>
+                                    <option id="Fitria" value="Fitria Samertawati">Fitria Samertawati</option>
+                                    <option id="Maria" value="Maria Kristiani S.">Maria Kristiani S.</option>
+                                </select>
+                                </div>
+                                <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                        </div>
+                        </div>
+
 
         
     </div>
@@ -140,6 +299,8 @@
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="../../assets/DataTables/datatables.min.js"></script>
+<script src="../js/script.js"></script>
 <!-- Popper.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
@@ -147,10 +308,43 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#myTable').DataTable();
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });
+        function input_detil(id1,id2,id3,id4) {
+		var id_tahun = id1;
+		var id_page = id2;
+		var username = id3;
+		var tahun = id4;
+    }
+
+    $('#ShowHidBut').on('click',function(){
+		var x = $("#divDisplay");
+    	if (x.css('display') == "none") {
+        	x.css({'display':'block'});
+            $("#ShowHidBut").val("Sembuyikan");
+    	} else {
+        	x.css({'display':'none'});
+			$("#ShowHidBut").val("Tambah Tahun");
+    	}
+	})
+
+    $('.ShowHidBut1').on('click',function(){
+        var position = $(this).attr('data-id');
+        var x = $("#divDisplay"+position);
+    	if (x.css('display') == "none") {
+        	x.css({'display':'block'});
+            $(this).val("Sembuyikan");
+    	} else {
+        	x.css({'display':'none'});
+			$(this).val("Go");
+    	}
+	})
     });
+</script>
+<script type="text/javascript">
+
 </script>
 </body>
 

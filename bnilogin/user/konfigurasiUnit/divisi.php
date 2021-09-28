@@ -26,6 +26,7 @@
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="../../assets/DataTables/datatables.min.css">
 <!-- Our Custom CSS -->
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="../favicon.ico">
@@ -152,7 +153,8 @@
             <br>
             <br> -->
 
-        <table border="2" cellpadding = 10 cellspacing = 0>
+            <table class="table table-stripped table-bordered" id="myTable">
+                <thead>
                     <tr>
                         <td>No.</td>
                         <td>KODE SEKTOR</td>
@@ -164,28 +166,34 @@
                         <td>STATUS</td>
                         <td>AKSI</td>
                     </tr>
+                    </thead>
+                    <tbody>
                     <?php $i = 1; ?>
                     <?php foreach($kodesektor as $kode) : ?>
                     <tr>
                         <td> <?= $i;?> </td> 
-                        <td class="kd_sektor"><?= $kode["kd_sektor"];?> </td>
-                        <td class="kd_divisi"><?= $kode["kd_divisi"];?></td>
-                        <td class="nm_divisi"><?= $kode["nm_divisi"];?></td>
-                        <td class="nm_gm"><?= $kode["nm_gm"];?></td>
-                        <td class="tipe_divisi"><?= $kode["tipe_divisi"];?></td>
-                        <td class="level_divisi"><?= $kode["level_divisi"];?></td>
-                        <td><?= $kode["status"];?></td>
-                        <td><a href="../../clean.php?id=<?= $kode["id"]; ?>" onclick="return confirm('Hapus Data?');"><i class="fa fa-trash" aria-hidden="true"></i></a> | <a href="../../edit.php?id=<?=$kode["id"];?>"> <i class="fas fa-pencil-alt" aria-hidden="true"></i> </a> </td>
+                        <td class="kd_sektor<?=$kode['id']?>"><?= $kode["kd_sektor"];?> </td>
+                        <td class="kd_divisi<?=$kode['id']?>"><?= $kode["kd_divisi"];?></td>
+                        <td class="nm_divisi<?=$kode['id']?>"><?= $kode["nm_divisi"];?></td>
+                        <td class="nm_gm<?=$kode['id']?>"><?= $kode["nm_gm"];?></td>
+                        <td class="tipe_divisi<?=$kode['id']?>"><?= $kode["tipe_divisi"];?></td>
+                        <td class="level_divisi<?=$kode['id']?>"><?= $kode["level_divisi"];?></td>
+                        <td class="status<?=$kode["id"]?>"><?= $kode["status"];?></td>
+                        <td> 
+                        <a href="../../clean.php?id=<?= $kode["id"]; ?>&folder=konfigurasiUnit&table=divisi" onclick="return confirm('Hapus Data?');" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> &nbsp;
+                        <a href="../../edit.php?id=<?=$kode["id"];?>&folder=konfigurasiUnit" data-id="<?=$kode['id']?>" class="editData btn btn-sm btn-primary" data-href="divisi" data-bs-toggle="modal" data-bs-target="#modalBox"> <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                        </td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach; ?>
+                    <tbody>
         </table>
             <br>
             <br>
-            <form action="../../tambah.php" method="POST">
+            <form id="form" action="../../tambah.php" method="POST"> <!-- kurang id form -->
                     <!-- Button trigger modal -->
                     <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBox">
+                    <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#modalBox">
                     <i class="fa fa-map-pin"></i>
                    <span>Tambah Divisi</span>
                     </button>
@@ -200,28 +208,30 @@
                         </div>
                         <div class="modal-body">
                         <div class="mb-3">
-                            <label for="id" class="form-label">ID Divisi : <?= $kode["id"];?> </label>
+                            <label for="id" class="form-label">ID Divisi : <span id="idtambah"><?=$kode['id']?></span><span  id="kodeid"></span> </label>
                             </div>
                         <div class="mb-3">
                             <label for="kd_sektor" class="form-label">Kode Sektor :</label>
                             <select class="form-select" id="kd_sektor" name="kd_sektor" required>
                                     <option value=""><strong>-Pilih Sektor-</strong></option>
-                                    <option value="DIU">DIU</option>
-                                    <option value="WADIU">WADIU</option>
-                                    <option value="DKP">DKP</option>
-                                    <option value="DMK">DMK</option>
-                                    <option value="DKR">DKR</option>
-                                    <option value="DKU">DKU</option>
-                                    <option value="DTS">DTS</option>
-                                    <option value="DHL">DHL</option>
-                                    <option value="DMR">DMR</option>
-                                    <option value="DHN">DHN</option>
-                                    <option value="DTI">DTI</option>
-                                    <option value="SRR">SRR</option>
-                                    <option value="SJR">SJR</option>
-                                    <option value="DLJ">DLJ</option>
+                                    <option id="DIU" value="DIU">DIU</option>
+                                    <option id="WADIU" value="WADIU">WADIU</option>
+                                    <option id="DKP" value="DKP">DKP</option>
+                                    <option id="DMK" value="DMK">DMK</option>
+                                    <option id="DKR" value="DKR">DKR</option>
+                                    <option id="DKU" value="DKU">DKU</option>
+                                    <option id="DTS" value="DTS">DTS</option>
+                                    <option id="DHL" value="DHL">DHL</option>
+                                    <option id="DMR" value="DMR">DMR</option>
+                                    <option id="DHN" value="DHN">DHN</option>
+                                    <option id="DTI" value="DTI">DTI</option>
+                                    <option id="SRR" value="SRR">SRR</option>
+                                    <option id="SJR" value="SJR">SJR</option>
+                                    <option id="DLJ" value="DLJ">DLJ</option>
                             </select>
                             <input type="hidden"  id="table" name="table" value="divisi">
+                            <input type="hidden"  id="id" name="id">
+                            <input name="folder" type="text" hidden value="konfigurasiUnit">
                         </div>
                         <div class="mb-3">
                             <label for="kd_divisi" class="form-label">Kode Divisi :</label>
@@ -240,8 +250,8 @@
                                 <br>
                                 <select class="form-select" id="tipe_divisi" name="tipe_divisi" required>
                                     <option value=""><strong>-Pilih Tipe-</strong></option>
-                                    <option value="BUSINESS">Business Unit</option>
-                                    <option value="FUNCTION">Functional Unit</option>
+                                    <option id="BUSINESS" value="BUSINESS">Business Unit</option>
+                                    <option id="FUNCTION" value="FUNCTION">Functional Unit</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -249,11 +259,21 @@
                                 <br>
                                 <select class="form-select" id="level_divisi" name="level_divisi" required>
                                     <option value=""><strong>-Pilih Level-</strong></option>
-                                    <option value="divisi">Divisi</option>
-                                    <option value="satuan">Satuan</option>
-                                    <option value="unit">unit</option>
+                                    <option id="DIVISI" value="DIVISI">Divisi</option>
+                                    <option id="SATUAN" value="SATUAN">Satuan</option>
+                                    <option id="UNIT" value="UNIT">unit</option>
                                 </select>
                                 </div>
+                                <div class="form-group">
+                                <label for="status">Status</label>
+                                <br>
+                                <select class="form-select" id="status" name="status" required>
+                                    <option value=""><strong>-Pilih status-</strong></option>
+                                    <option id="AKTIF" value="AKTIF">AKTIF</option>
+                                    <option id="T_AKTIF" value="TIDAK AKTIF">TIDAK AKTIF</option>
+                                </select>
+                                </div>
+                                
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -271,15 +291,14 @@
     </div>
 </div>
 
-<!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<!-- Popper.JS -->
+<script src="../../assets/DataTables/datatables.min.js"></script>
+<script src="../js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<!-- Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#myTable').DataTable();
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });

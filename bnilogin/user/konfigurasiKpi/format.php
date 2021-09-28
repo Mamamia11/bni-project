@@ -1,7 +1,16 @@
 <?php 
 
     require '../../function.php';
+    session_start();
+	if (empty($_SESSION['username'])) {
+		echo "<script>
+                alert('Maaf Anda Belum Login');
+				document.location = '../../login.php'
+            </script>";
+	}
 
+    $kodesektor = query("SELECT*FROM perspective");
+    $kodesektor2 = query("SELECT*FROM format_perspective GROUP BY id_format");
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,14 +24,16 @@
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="../../assets/DataTables/datatables.min.css">
 <!-- Our Custom CSS -->
 <link rel="stylesheet" href="../css/style.css">
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="../favicon.ico">
 
 
 <!-- Font Awesome JS -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -133,13 +144,156 @@
             </div>
         </nav>
 
+        <table class="table table-striped table-bordered" id="myTable">
+            <thead>
+                <td>NO</td>
+                <td>FORMAT NAME</td>
+                <td>VIEW</td>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($kodesektor2 as $key => $kode) {
+                ?>
+<tr>
+                        <td> <?= ++$key;?> </td>
+                        <td>
+                        <a style="text-decoration:none" title="Double Click untuk Edit" ondblclick="editFormatPerspective(1,35)">
+		                <?=$kode['nm_format']?></a>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-primary tambahDatas" data-id="<?=$kode['id_format']?>" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$kode['id_format']?>">
+                            <i class="fa fa-map-pin"></i>
+                            <span>View</span>
+                        </button>
+                        <div class="modal fade" id="exampleModal<?=$kode['id_format']?>" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="formModalLabel">Input Sektor</h5>
+                            <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <table class="table table-stripped table-bordered" id="myTable">
+                            <tr>
+                                <th>ORDER</th>
+                                <th>PERSPECTIVE</th>
+                            </tr>
+                            <?php
+                                $order = changeValue($kode['id_format']);
+                                foreach ( $order as $p) {
+                                    if($p['order_perspective'] != 0){
+                                    ?>
+                                        <tr>
+                                        <td><?=$p['order_perspective']?></td>
+                                            <td><?=$p['PERSPECTIVE']?></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                }
+                            ?>
+                        </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                        </td>                   
+                     </tr>
+                     
+                <?php
+                
+                    }
+                    $id = $kode['id_format']+1;
+                ?>
+            </tbody>
+
+
+        </table>
 
         
+
+        <button type="button" class="btn btn-primary format" data-bs-toggle="modal" data-bs-target="#tambahFormat">
+                 <i class="fa fa-map-pin"></i>
+                    <span>Tambah Format</span>
+        </button>
+        <!-- modal tambah -->
+        <div class="modal fade" id="tambahFormat" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="formModalLabel">Input Sektor</h5>
+                            <button type="button" class="fa fa-window-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form action="../../tambah.php" method="POST">
+                        <label for="Tambah Format"> <strong>Tambah Format</strong></label>
+                        &nbsp;
+                        <br>
+                        <input type="text" name="format" id="format" required>
+                        <br>
+                        <br>
+                        <table class="table table-stripped table-bordered" id="myTable">
+                            <tr>
+                                <th rowspan="2" class="text-center">NO</th>
+                                <th rowspan="2" class="text-center">NAMA PERSPECTIVE</th>
+                                <th colspan="2" class="text-center">STATUS</th>
+                                <th rowspan="2" class="text-center">ORDER</th>
+                            </tr>
+                            <tr>
+                                <th class="text-center">TIDAK AKTIF</th>
+                                <th class="text-center">AKTIF</th>
+                            </tr>
+                            <?php foreach ($kodesektor as $kodi) : ?>
+                            <tr>
+                                <td><?= $kodi['ID_PERSPECTIVE']; ?></td>
+                                <td><?= $kodi['PERSPECTIVE'];?></td>
+                                <td> <input name="status[<?=$kodi['ID_PERSPECTIVE']?>]" class="unaktif-radio" data-id="<?=$kodi['ID_PERSPECTIVE']?>" type="radio" value="0" checked></td>
+                                <td> <input name="status[<?=$kodi['ID_PERSPECTIVE']?>]" class="aktif-radio" data-id="<?=$kodi['ID_PERSPECTIVE']?>" type="radio" value="<?=$kodi['ID_PERSPECTIVE']?>" ></td>
+                                <td>
+                                <select name="order[<?=$kodi['ID_PERSPECTIVE']?>]" id="order<?=$kodi['ID_PERSPECTIVE']?>" disabled="disabled" required="">
+                                <option class="default-value<?=$kodi['ID_PERSPECTIVE']?>" value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+			                    </select>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+
+                        </table>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden"  id="table" name="table" value="format_perspective">
+                            <input type="hidden"  id="id" name="id" value="<?=$id?>">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+            </form>
     </div>
 </div>
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="../../assets/DataTables/datatables.min.js"></script>
+<script src="../js/script.js"></script>
 <!-- Popper.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
@@ -147,10 +301,32 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#myTable').DataTable();
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });
     });
+</script>
+<script>    
+	function hapusFormat(id1,id2) {
+		var idFormat = id1;
+		var id_page = id2;
+		
+		konfirm = confirm("Hapus data Format Perspective ini ?");
+		if (konfirm) { 
+			document.location.href='submit_format_perspective.php?Submit=Hapus&&idFormat='+idFormat+'&&id_page='+id_page;
+		}
+		else {
+			document.location.href='ris_config_format_perspective.php?id='+id_page;
+	 	}
+	}
+	
+	function editFormatPerspective(id1,id2) {
+		var idFormat = id1;
+		var id_page = id2;
+		window.open('edit_format_perspective.php?idFormat='+idFormat+'&&id='+id_page, '', 'width=1024, height=1024, left=0, top=0, menubar=yes,location=yes,scrollbars=yes, resizeable=yes, status=no, copyhistory=yes,toolbar=yes, titlebar=yes');
+	}
+
 </script>
 </body>
 
