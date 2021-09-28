@@ -122,6 +122,9 @@
             case 'kpiunit':
                 $values = "'', '".$data['level']."','". $data['unit'] ."'";
                 break;
+            case 'tahun_kelolaan' :
+                    $values = "'', '".$data['tahun']."'";
+                    break;
                 default :
                     break;
         }
@@ -184,7 +187,7 @@
         }else {
             // kalo tidak ditemukan
             echo "<script>
-                alert('Maaf Data Tidak Ditemukan');
+                alert('Maaf Username / Password Salah');
             </script>";
         }
 

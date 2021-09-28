@@ -20,12 +20,12 @@
     ";
     }
     }else {
-//         echo "
-//         <script>
-//             alert ('Data gagal ditambah');
-//             document.location.href = 'admin/". $_POST['folder']."/". $_POST['table'] .".php'
-//         </script>
-// "; 
+        echo "
+        <script>
+            alert ('Data gagal ditambah');
+            document.location.href = 'admin/". $_POST['folder']."/". $_POST['table'] .".php'
+        </script>
+"; 
 }
 } 
 ?>

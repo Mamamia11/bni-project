@@ -156,7 +156,7 @@
                             <?php
                                 foreach ($kodesektor as $key => $tahun) {
                                     ?>
-<tr height="30">
+                        <tr height="30">
                         <td width="14">»</td>&nbsp;
                         <td width="114"><?=$tahun['tahun']?></td>
                         <td width="33">
@@ -165,7 +165,7 @@
                         </div>    
                         </td>
                     </tr>
-                                    <?php
+                            <?php
                                 }
                             ?>
                             
@@ -190,7 +190,7 @@
                     $i = 1; 
                     $kodesektor2 = query("SELECT * FROM kpisub WHERE TAHUN = ".$tahun['tahun']."");
                     foreach ($kodesektor2 as $key => $kode) {
-                        ?>
+                    ?>
                  <tr>
                     <td> <?= $i; ?> </td>
                     <td class="LEVEL_UNIT <?= $kode['ID_DATA']; ?>"> <?= $kode['LEVEL_UNIT'];?> </td>
@@ -293,7 +293,6 @@
 		var id_page = id2;
 		var username = id3;
 		var tahun = id4;
-		window.location = "ris_pmg_config_unit_sub_type_process.php?id_tahun="+id_tahun+"&&id="+id_page+"&&npp="+username+"&&tahun="+tahun;
 	}
 	
     $('#ShowHidBut').on('click',function(){
