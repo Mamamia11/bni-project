@@ -154,11 +154,10 @@
                 <?php
                     foreach ($kodesektor2 as $key => $kode) {
                 ?>
-<tr>
+                    <tr>
                         <td> <?= ++$key;?> </td>
                         <td>
-                        <a style="text-decoration:none" title="Double Click untuk Edit" ondblclick="editFormatPerspective(1,35)">
-		                <?=$kode['nm_format']?></a>
+                        <a><?=$kode['nm_format']?></a>
                         </td>
                         <td>
                         <button type="button" class="btn btn-primary tambahDatas" data-id="<?=$kode['id_format']?>" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$kode['id_format']?>">
@@ -185,7 +184,7 @@
                                     ?>
                                         <tr>
                                         <td><?=$p['order_perspective']?></td>
-                                            <td><?=$p['PERSPECTIVE']?></td>
+                                        <td><?=$p['PERSPECTIVE']?></td>
                                         </tr>
                                     <?php
                                     }
@@ -193,10 +192,10 @@
                             ?>
                         </table>
                         </div>
-                        <div class="modal-footer">
+                        <!-- <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
-                        </div>
+                        </div> -->
                         </div>
                     </div>
                     </div>
@@ -306,27 +305,6 @@
             $('#sidebar').toggleClass('active');
         });
     });
-</script>
-<script>    
-	function hapusFormat(id1,id2) {
-		var idFormat = id1;
-		var id_page = id2;
-		
-		konfirm = confirm("Hapus data Format Perspective ini ?");
-		if (konfirm) { 
-			document.location.href='submit_format_perspective.php?Submit=Hapus&&idFormat='+idFormat+'&&id_page='+id_page;
-		}
-		else {
-			document.location.href='ris_config_format_perspective.php?id='+id_page;
-	 	}
-	}
-	
-	function editFormatPerspective(id1,id2) {
-		var idFormat = id1;
-		var id_page = id2;
-		window.open('edit_format_perspective.php?idFormat='+idFormat+'&&id='+id_page, '', 'width=1024, height=1024, left=0, top=0, menubar=yes,location=yes,scrollbars=yes, resizeable=yes, status=no, copyhistory=yes,toolbar=yes, titlebar=yes');
-	}
-
 </script>
 </body>
 

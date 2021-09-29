@@ -272,19 +272,10 @@
                                 </div>
                                 <div class="form-group container-fluid">
                                 <br>
-                                <label for="nama">Kelolaan</label>
+                                <label for="kelolaan">Kelolaan</label>
                                 <br>
-                                <select class="form-select" id="nama" name="nama" required>
-                                    <option value=""><strong>-Pilih Nama-</strong></option>
-                                    <option id="Sandino" value="Sandino Vico">Sandino Vico</option>
-                                    <option id="Tanti" value="Tanti Kuswitarini">Tanti Kuswitarini</option>
-                                    <option id="Sri" value="Sri Handayani">Sri Handayani</option>
-                                    <option id="Anfamedhiarifda" value="Anfamedhiarifda">Anfamedhiarifda</option>
-                                    <option id="Nafi" value="M. Diyan Nafi Jauhari">M. Diyan Nafi Jauhari</option>
-                                    <option id="Fitria" value="Fitria Samertawati">Fitria Samertawati</option>
-                                    <option id="Maria" value="Maria Kristiani S.">Maria Kristiani S.</option>
-                                </select>
-                                </div>
+                        
+                                
                                 <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
